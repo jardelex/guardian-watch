@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuardianWatch - Relatórios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { background-color: #0F172A; color: white; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; }
+    </style>
+</head>
+<body>
+    <div class="flex min-h-screen bg-[#0F172A]">
+        <button class="inline-flex items-center justify-center h-10 w-10 fixed top-4 left-4 z-50 md:hidden text-white hover:bg-slate-700 rounded-md">
+            <i data-lucide="menu" class="h-5 w-5"></i>
+        </button>
+
+        <aside class="fixed top-0 left-0 h-full z-40 bg-[#0F172A] border-r border-slate-700/50 flex flex-col w-[260px] hidden md:flex">
+            <div class="flex items-center gap-3 px-4 h-16 border-b border-slate-700/50">
+                <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                    <i data-lucide="shield" class="h-5 w-5 text-white"></i>
+                </div>
+                <span class="text-lg font-bold text-white">GuardianWatch</span>
+            </div>
+            
+            <nav class="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="index.html">
+                    <i data-lucide="layout-dashboard" class="h-5 w-5"></i><span>Painel</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="tempo.html">
+                    <i data-lucide="clock" class="h-5 w-5"></i><span>Tempo de Tela</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="apps.html">
+                    <i data-lucide="app-window" class="h-5 w-5"></i><span>Aplicativos</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="localizacao.html">
+                    <i data-lucide="map-pin" class="h-5 w-5"></i><span>Localização</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="filtro.html">
+                    <i data-lucide="shield" class="h-5 w-5"></i><span>Filtro Web</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-indigo-500/20 text-indigo-400" href="relatorios.html">
+                    <i data-lucide="bar-chart-2" class="h-5 w-5"></i><span>Relatórios</span>
+                </a>
+            </nav>
+
+            <div class="p-4 border-t border-slate-700/50 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-white text-sm font-bold">M</div>
+                <div>
+                    <p class="text-sm font-medium text-white">Miguel</p>
+                    <p class="text-xs text-emerald-400">Online agora</p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="flex-1 md:ml-[260px] p-4 md:p-6 lg:p-8 overflow-auto">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 mt-12 md:mt-0 gap-4">
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-bold text-white mb-2">Relatórios de Atividade</h1>
+                    <p class="text-slate-400">Análise detalhada do uso do dispositivo</p>
+                </div>
+                <div class="flex gap-2">
+                    <button class="px-3 py-1.5 text-sm rounded bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">Semanal</button>
+                    <button class="px-3 py-1.5 text-sm rounded border border-slate-700 text-slate-400 hover:bg-slate-800">Mensal</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="clock" class="h-4 w-4 text-indigo-400"></i>
+                        <span class="text-sm text-slate-400">Tempo Total</span>
+                    </div>
+                    <p class="text-2xl font-bold text-white">26.3h</p>
+                    <p class="text-xs text-emerald-400 mt-1 flex items-center gap-1"><i data-lucide="trending-down" class="h-3 w-3"></i> -13.2% vs anterior</p>
+                </div>
+                <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="app-window" class="h-4 w-4 text-purple-400"></i>
+                        <span class="text-sm text-slate-400">Apps Usados</span>
+                    </div>
+                    <p class="text-2xl font-bold text-white">34</p>
+                    <p class="text-xs text-slate-500 mt-1">De 42 instalados</p>
+                </div>
+                <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
+                    <div class="flex items-center gap-2 mb-2">

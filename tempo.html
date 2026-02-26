@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuardianWatch - Tempo de Tela</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { background-color: #0F172A; color: white; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; }
+    </style>
+</head>
+<body>
+    <div class="flex min-h-screen bg-[#0F172A]">
+        <button class="inline-flex items-center justify-center h-10 w-10 fixed top-4 left-4 z-50 md:hidden text-white hover:bg-slate-700 rounded-md">
+            <i data-lucide="menu" class="h-5 w-5"></i>
+        </button>
+
+        <aside class="fixed top-0 left-0 h-full z-40 bg-[#0F172A] border-r border-slate-700/50 flex flex-col w-[260px] hidden md:flex">
+            <div class="flex items-center gap-3 px-4 h-16 border-b border-slate-700/50">
+                <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                    <i data-lucide="shield" class="h-5 w-5 text-white"></i>
+                </div>
+                <span class="text-lg font-bold text-white">GuardianWatch</span>
+            </div>
+            
+            <nav class="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="index.html">
+                    <i data-lucide="layout-dashboard" class="h-5 w-5"></i><span>Painel</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-indigo-500/20 text-indigo-400" href="tempo.html">
+                    <i data-lucide="clock" class="h-5 w-5"></i><span>Tempo de Tela</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="apps.html">
+                    <i data-lucide="app-window" class="h-5 w-5"></i><span>Aplicativos</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="localizacao.html">
+                    <i data-lucide="map-pin" class="h-5 w-5"></i><span>Localização</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="filtro.html">
+                    <i data-lucide="shield" class="h-5 w-5"></i><span>Filtro Web</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="relatorios.html">
+                    <i data-lucide="bar-chart-2" class="h-5 w-5"></i><span>Relatórios</span>
+                </a>
+            </nav>
+
+            <div class="p-4 border-t border-slate-700/50 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-white text-sm font-bold">M</div>
+                <div>
+                    <p class="text-sm font-medium text-white">Miguel</p>
+                    <p class="text-xs text-emerald-400">Online agora</p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="flex-1 md:ml-[260px] p-4 md:p-6 lg:p-8 overflow-auto">
+            <div class="mb-8 mt-12 md:mt-0">
+                <h1 class="text-2xl md:text-3xl font-bold text-white mb-2">Tempo de Tela</h1>
+                <p class="text-slate-400">Gerencie limites de uso e horários permitidos</p>
+            </div>
+
+            <div class="relative rounded-xl overflow-hidden mb-8 h-36 border border-slate-700/50">
+                <div class="absolute inset-0 bg-gradient-to-r from-indigo-900/80 to-purple-900/80 flex items-center px-6">
+                    <div>
+                        <h2 class="text-xl font-bold text-white mb-1"><i data-lucide="clock" class="inline w-5 h-5 mr-2"></i>Controle Inteligente</h2>
+                        <p class="text-slate-300 text-sm">Defina limites saudáveis para o uso de tela do dispositivo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-6">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-semibold text-white">Uso Hoje</h3>
+                            <button class="inline-flex items-center gap-2 border h-9 rounded-md px-3 border-slate-600 text-slate-300 hover:bg-slate-700 text-sm">
+                                <i data-lucide="pause" class="h-4 w-4"></i> Pausar Agora
+                            </button>
+                        </div>
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm mb-2 text-slate-400">
+                                <span>2h 45min usado</span>
+                                <span>Limite: 4h 0min</span>
+                            </div>
+                            <div class="h-4 bg-slate-700 rounded-full overflow-hidden">
+                                <div class="h-full rounded-full transition-all duration-500" style="width: 68.75%; background: linear-gradient(90deg, rgb(99, 102, 241), rgb(139, 92, 246));"></div>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-2">1h 15min restantes</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-6">
+                        <h3 class="text-lg font-semibold text-white mb-4">Perfis de Horário</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <button class="p-4 rounded-lg border text-left border-indigo-500 bg-indigo-500/10">
+                                <p class="text-sm font-medium text-white mb-2">Dia Escolar</p>
+                                <div class="space-y-1 text-xs text-slate-400">
+                                    <p>Semana: 3h</p><p>Fim de sem: 4h</p><p>Dormir: 21:00</p>
+                                </div>
+                                <span class="inline-block mt-2 px-2 py-1 text-xs rounded-full bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">Ativo</span>
+                            </button>
+                            <button class="p-4 rounded-lg border text-left border-slate-700 bg-slate-800/50 hover:border-slate-600">
+                                <p class="text-sm font-medium text-white mb-2">Férias</p>
+                                <div class="space-y-1 text-xs text-slate-400">
+                                    <p>Semana: 5h</p><p>Fim de sem: 6h</p><p>Dormir: 22:00</p>
+                                </div>
+                            </button>
+                            <button class="p-4 rounded-lg border text-left border-slate-700 bg-slate-800/50 hover:border-slate-600">
+                                <p class="text-sm font-medium text-white mb-2">Restrito</p>
+                                <div class="space-y-1 text-xs text-slate-400">
+                                    <p>Semana: 1h</p><p>Fim de sem: 2h</p><p>Dormir: 20:00</p>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-6">
+                        <h3 class="text-lg font-semibold text-white mb-4">Limite Diário</h3>
+                        <div class="flex items-center justify-center mb-6">
+                            <div class="w-28 h-28 rounded-full border-4 border-indigo-500 flex items-center justify-center">
+                                <div class="text-center">
+                                    <p class="text-2xl font-bold text-white">4h</p>
+                                    <p class="text-xs text-slate-400">0min</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold text-white">Modo Noturno</h3>
+                            <span class="text-emerald-400 text-sm font-bold">LIGADO</span>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-800/50">
+                                <i data-lucide="moon" class="h-5 w-5 text-indigo-400"></i>
+                                <div><p class="text-sm text-white">Início</p><p class="text-xs text-slate-400">21:00</p></div>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-800/50">
+                                <i data-lucide="sun" class="h-5 w-5 text-amber-400"></i>
+                                <div><p class="text-sm text-white">Fim</p><p class="text-xs text-slate-400">07:00</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>

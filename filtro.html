@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuardianWatch - Filtro Web</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { background-color: #0F172A; color: white; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; }
+    </style>
+</head>
+<body>
+    <div class="flex min-h-screen bg-[#0F172A]">
+        <button class="inline-flex items-center justify-center h-10 w-10 fixed top-4 left-4 z-50 md:hidden text-white hover:bg-slate-700 rounded-md">
+            <i data-lucide="menu" class="h-5 w-5"></i>
+        </button>
+
+        <aside class="fixed top-0 left-0 h-full z-40 bg-[#0F172A] border-r border-slate-700/50 flex flex-col w-[260px] hidden md:flex">
+            <div class="flex items-center gap-3 px-4 h-16 border-b border-slate-700/50">
+                <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                    <i data-lucide="shield" class="h-5 w-5 text-white"></i>
+                </div>
+                <span class="text-lg font-bold text-white">GuardianWatch</span>
+            </div>
+            
+            <nav class="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="index.html">
+                    <i data-lucide="layout-dashboard" class="h-5 w-5"></i><span>Painel</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="tempo.html">
+                    <i data-lucide="clock" class="h-5 w-5"></i><span>Tempo de Tela</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="apps.html">
+                    <i data-lucide="app-window" class="h-5 w-5"></i><span>Aplicativos</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="localizacao.html">
+                    <i data-lucide="map-pin" class="h-5 w-5"></i><span>Localização</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-indigo-500/20 text-indigo-400" href="filtro.html">
+                    <i data-lucide="shield" class="h-5 w-5"></i><span>Filtro Web</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="relatorios.html">
+                    <i data-lucide="bar-chart-2" class="h-5 w-5"></i><span>Relatórios</span>
+                </a>
+            </nav>
+
+            <div class="p-4 border-t border-slate-700/50 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-white text-sm font-bold">M</div>
+                <div>
+                    <p class="text-sm font-medium text-white">Miguel</p>
+                    <p class="text-xs text-emerald-400">Online agora</p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="flex-1 md:ml-[260px] p-4 md:p-6 lg:p-8 overflow-auto">
+            <div class="mb-8 mt-12 md:mt-0">
+                <h1 class="text-2xl md:text-3xl font-bold text-white mb-2">Filtro de Conteúdo Web</h1>
+                <p class="text-slate-400">Configure quais tipos de conteúdo podem ser acessados</p>
+            </div>
+
+            <div class="bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-xl border border-indigo-500/30 p-5 mb-6">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-indigo-500/30 flex items-center justify-center">
+                            <i data-lucide="shield-check" class="h-5 w-5 text-indigo-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-white">Busca Segura (SafeSearch)</h3>
+                            <p class="text-sm text-slate-400">Filtra resultados impróprios no Google, Bing e outros buscadores</p>
+                        </div>
+                    </div>
+                    <span class="text-emerald-400 font-bold text-sm">ATIVO</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
+                    <h3 class="text-lg font-semibold text-white mb-4">Categorias de Conteúdo</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="p-4 rounded-lg border border-red-500/30 bg-red-500/5">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm font-medium text-white">🔞 Adulto</span>
+                                <span class="text-red-400 text-xs">Bloqueado</span>
+                            </div>
+                            <p class="text-xs text-slate-400">Sites com conteúdo impróprio</p>
+                        </div>
+                        <div class="p-4 rounded-lg border border-red-500/30 bg-red-500/5">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm font-medium text-white">⚔️ Violência</span>
+                                <span class="text-red-400 text-xs">Bloqueado</span>
+                            </div>
+                            <p class="text-xs text-slate-400">Conteúdo violento e gore</p>
+                        </div>
+                        <div class="p-4 rounded-lg border border-red-500/30 bg-red-500/5">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm font-medium text-white">🎰 Apostas</span>
+                                <span class="text-red-400 text-xs">Bloqueado</span>
+                            </div>
+                            <p class="text-xs text-slate-400">Cassinos online</p>
+                        </div>
+                        <div class="p-4 rounded-lg border border-slate-700 bg-slate-800/50">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm font-medium text-white">🎬 Vídeos</span>
+                                <span class="text-emerald-400 text-xs">Permitido</span>
+                            </div>
+                            <p class="text-xs text-slate-400">YouTube, Netflix</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
+                        <h3 class="text-base font-semibold text-white mb-3 flex items-center gap-2">
+                            <i data-lucide="x-circle" class="h-4 w-4 text-red-400"></i> Sites Bloqueados
+                        </h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between p-2 rounded bg-slate-800/50">
+                                <div class="flex items-center gap-2"><i data-lucide="globe" class="h-3 w-3 text-red-400"></i><span class="text-sm text-slate-300">bet365.com</span></div>
+                            </div>
+                            <div class="flex items-center justify-between p-2 rounded bg-slate-800/50">
+                                <div class="flex items-center gap-2"><i data-lucide="globe" class="h-3 w-3 text-red-400"></i><span class="text-sm text-slate-300">4chan.org</span></div>
+                            </div>
+                            <div class="flex items-center justify-between p-2 rounded bg-slate-800/50">
+                                <div class="flex items-center gap-2"><i data-lucide="globe" class="h-3 w-3 text-red-400"></i><span class="text-sm text-slate-300">omegle.com</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
+                        <h3 class="text-base font-semibold text-white mb-3 flex items-center gap-2">
+                            <i data-lucide="check-circle-2" class="h-4 w-4 text-emerald-400"></i> Sites Permitidos
+                        </h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between p-2 rounded bg-slate-800/50">
+                                <div class="flex items-center gap-2"><i data-lucide="globe" class="h-3 w-3 text-emerald-400"></i><span class="text-sm text
