@@ -3,74 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GuardianWatch - Controle Parental</title>
+    <title>GuardianWatch - Painel</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { background-color: #0F172A; color: white; font-family: sans-serif; }
+        body { background-color: #0F172A; color: white; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; }
     </style>
 </head>
 <body>
-    <div class="flex min-h-screen">
-        <aside class="fixed top-0 left-0 h-full w-[260px] bg-[#0F172A] border-r border-slate-700/50 flex flex-col hidden md:flex">
+    <div class="flex min-h-screen bg-[#0F172A]">
+        <button class="inline-flex items-center justify-center h-10 w-10 fixed top-4 left-4 z-50 md:hidden text-white hover:bg-slate-700 rounded-md">
+            <i data-lucide="menu" class="h-5 w-5"></i>
+        </button>
+
+        <aside class="fixed top-0 left-0 h-full z-40 bg-[#0F172A] border-r border-slate-700/50 flex flex-col w-[260px] hidden md:flex">
             <div class="flex items-center gap-3 px-4 h-16 border-b border-slate-700/50">
                 <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                    <i data-lucide="shield" class="text-white w-5 h-5"></i>
+                    <i data-lucide="shield" class="h-5 w-5 text-white"></i>
                 </div>
-                <span class="text-lg font-bold">GuardianWatch</span>
+                <span class="text-lg font-bold text-white">GuardianWatch</span>
             </div>
-            <nav class="flex-1 py-4 px-3 space-y-1">
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-indigo-500/20 text-indigo-400" href="#">
-                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i> <span>Painel</span>
+            
+            <nav class="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-indigo-500/20 text-indigo-400" href="index.html">
+                    <i data-lucide="layout-dashboard" class="h-5 w-5"></i><span>Painel</span>
                 </a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800" href="#">
-                    <i data-lucide="clock" class="w-5 h-5"></i> <span>Tempo de Tela</span>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="tempo.html">
+                    <i data-lucide="clock" class="h-5 w-5"></i><span>Tempo de Tela</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="apps.html">
+                    <i data-lucide="app-window" class="h-5 w-5"></i><span>Aplicativos</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="localizacao.html">
+                    <i data-lucide="map-pin" class="h-5 w-5"></i><span>Localização</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="filtro.html">
+                    <i data-lucide="shield" class="h-5 w-5"></i><span>Filtro Web</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="relatorios.html">
+                    <i data-lucide="bar-chart-2" class="h-5 w-5"></i><span>Relatórios</span>
                 </a>
             </nav>
+
             <div class="p-4 border-t border-slate-700/50 flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center font-bold">M</div>
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-white text-sm font-bold">M</div>
                 <div>
-                    <p class="text-sm font-medium">Miguel</p>
+                    <p class="text-sm font-medium text-white">Miguel</p>
                     <p class="text-xs text-emerald-400">Online agora</p>
                 </div>
             </div>
         </aside>
 
-        <main class="flex-1 md:ml-[260px] p-8">
-            <header class="mb-8">
-                <h1 class="text-3xl font-bold">Painel de Controle</h1>
-                <p class="text-slate-400">Monitoramento em tempo real de <span class="text-indigo-400">Miguel</span></p>
-            </header>
+        <main class="flex-1 md:ml-[260px] p-4 md:p-6 lg:p-8 overflow-auto">
+            <div class="mb-8 mt-12 md:mt-0">
+                <h1 class="text-2xl md:text-3xl font-bold text-white mb-2">Painel de Controle</h1>
+                <p class="text-slate-400">Monitoramento em tempo real do dispositivo de <span class="text-indigo-400 font-medium">Miguel</span></p>
+            </div>
 
-            <div class="bg-gradient-to-r from-slate-800 to-slate-900 rounded-xl p-8 mb-8 border border-slate-700/50">
-                <h2 class="text-2xl font-bold mb-2">Proteção Ativa ✅</h2>
-                <p class="text-slate-300">Todos os filtros estão funcionando normalmente.</p>
+            <div class="bg-gradient-to-r from-slate-800 to-slate-900 rounded-xl p-8 mb-8 border border-slate-700/50 flex justify-between items-center">
+                <div>
+                    <h2 class="text-2xl font-bold text-white mb-2 flex items-center gap-2">Proteção Ativa <i data-lucide="check-circle-2" class="text-emerald-500 w-6 h-6"></i></h2>
+                    <p class="text-slate-300">Todos os filtros e controles estão funcionando normalmente.</p>
+                </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                <div class="bg-[#1E293B] p-5 rounded-xl border border-slate-700/50">
-                    <p class="text-slate-400 text-sm font-bold uppercase">Tempo de Tela Hoje</p>
-                    <p class="text-2xl font-bold mt-1">2h 45min</p>
+                <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400"><i data-lucide="clock" class="h-5 w-5"></i></div>
+                        <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded-full">-15%</span>
+                    </div>
+                    <h3 class="text-sm font-medium text-slate-400">Tempo de Tela Hoje</h3>
+                    <p class="text-2xl font-bold text-white mt-1">2h 45min</p>
                 </div>
-                <div class="bg-[#1E293B] p-5 rounded-xl border border-slate-700/50">
-                    <p class="text-slate-400 text-sm font-bold uppercase">Apps Bloqueados</p>
-                    <p class="text-2xl font-bold mt-1">8</p>
+                
+                <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center text-red-400"><i data-lucide="app-window" class="h-5 w-5"></i></div>
+                    </div>
+                    <h3 class="text-sm font-medium text-slate-400">Apps Bloqueados</h3>
+                    <p class="text-2xl font-bold text-white mt-1">8</p>
                 </div>
-                <div class="bg-[#1E293B] p-5 rounded-xl border border-slate-700/50">
-                    <p class="text-slate-400 text-sm font-bold uppercase">Localização</p>
-                    <p class="text-2xl font-bold mt-1">Em casa</p>
+
+                <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400"><i data-lucide="map-pin" class="h-5 w-5"></i></div>
+                    </div>
+                    <h3 class="text-sm font-medium text-slate-400">Localização</h3>
+                    <p class="text-2xl font-bold text-white mt-1">Em casa</p>
                 </div>
-                <div class="bg-[#1E293B] p-5 rounded-xl border border-slate-700/50">
-                    <p class="text-slate-400 text-sm font-bold uppercase">Sites Bloqueados</p>
-                    <p class="text-2xl font-bold mt-1">23</p>
+
+                <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400"><i data-lucide="shield" class="h-5 w-5"></i></div>
+                        <span class="text-xs bg-red-500/20 text-red-400 px-2 py-1 rounded-full">+2</span>
+                    </div>
+                    <h3 class="text-sm font-medium text-slate-400">Sites Bloqueados</h3>
+                    <p class="text-2xl font-bold text-white mt-1">23</p>
                 </div>
             </div>
+
+            <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
+                <h3 class="text-lg font-semibold text-white mb-4">Atividade Recente</h3>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between p-3 rounded-lg bg-slate-800/50 hover:bg-slate-800">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="check-circle-2" class="text-emerald-400 h-5 w-5"></i>
+                            <div><p class="text-sm text-white">Abriu YouTube</p><p class="text-xs text-slate-500">14:32</p></div>
+                        </div>
+                        <span class="text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded-full">Permitido</span>
+                    </div>
+                    <div class="flex items-center justify-between p-3 rounded-lg bg-slate-800/50 hover:bg-slate-800">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="shield-alert" class="text-red-400 h-5 w-5"></i>
+                            <div><p class="text-sm text-white">Tentou acessar site de apostas</p><p class="text-xs text-slate-500">14:15</p></div>
+                        </div>
+                        <span class="text-xs text-red-400 bg-red-500/10 border border-red-500/20 px-2 py-1 rounded-full">Bloqueado</span>
+                    </div>
+                </div>
+            </div>
+
         </main>
     </div>
 
-    <script>
-        // Inicializa os ícones do Lucide
-        lucide.createIcons();
-    </script>
+    <script>lucide.createIcons();</script>
 </body>
 </html>
