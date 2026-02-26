@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GuardianWatch - Configurações</title>
+    <title>GuardianWatch - Painel</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -17,52 +17,68 @@
                 <div class="w-9 h-9 rounded-lg bg-indigo-500 flex items-center justify-center"><i data-lucide="shield" class="h-5 w-5 text-white"></i></div>
                 <span class="text-lg font-bold text-white">GuardianWatch</span>
             </div>
+            
             <nav class="flex-1 py-4 px-3 space-y-1">
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white" href="painel.html"><i data-lucide="layout-dashboard" class="h-5 w-5"></i><span>Painel</span></a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-indigo-500/20 text-indigo-400" href="painel.html"><i data-lucide="layout-dashboard" class="h-5 w-5"></i><span>Painel</span></a>
                 <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white" href="tempo.html"><i data-lucide="clock" class="h-5 w-5"></i><span>Tempo de Tela</span></a>
                 <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white" href="apps.html"><i data-lucide="app-window" class="h-5 w-5"></i><span>Aplicativos</span></a>
                 <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white" href="localizacao.html"><i data-lucide="map-pin" class="h-5 w-5"></i><span>Localização</span></a>
                 <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white" href="filtro.html"><i data-lucide="shield" class="h-5 w-5"></i><span>Filtro Web</span></a>
                 <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white" href="relatorios.html"><i data-lucide="bar-chart-2" class="h-5 w-5"></i><span>Relatórios</span></a>
                 <div class="my-2 border-t border-slate-700/50"></div>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-indigo-500/20 text-indigo-400" href="configuracoes.html"><i data-lucide="settings" class="h-5 w-5"></i><span>Configurações</span></a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white" href="configuracoes.html"><i data-lucide="settings" class="h-5 w-5"></i><span>Configurações</span></a>
             </nav>
+
             <div class="p-4 border-t border-slate-700/50 flex items-center gap-3">
                 <div id="letraSidebar" class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold overflow-hidden border border-slate-600">?</div>
                 <div>
                     <p id="nomeSidebar" class="text-sm font-bold text-white truncate w-32">Carregando...</p>
+                    <p class="text-[10px] text-emerald-400 flex items-center gap-1"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span> Online agora</p>
                 </div>
             </div>
         </aside>
 
         <main class="flex-1 md:ml-[260px] p-8">
-            <h1 class="text-3xl font-bold text-white mb-8">Configurações do Sistema</h1>
-            
-            <div class="max-w-md space-y-4">
-                <button onclick="desconectar()" class="w-full bg-red-500/10 border border-red-500/30 text-red-500 py-4 rounded-xl font-bold flex items-center justify-center gap-3 hover:bg-red-500/20 transition-all">
-                    <i data-lucide="log-out" class="w-5 h-5"></i> Desconectar Conta e Sair
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-white mb-2">Painel de Controle</h1>
+                <p class="text-slate-400 italic">Monitorando dispositivo de <span id="nomeHeader" class="text-indigo-400 font-bold">...</span></p>
+            </div>
+
+            <div class="bg-gradient-to-r from-slate-800 to-slate-900 rounded-xl p-8 border border-slate-700/50 flex justify-between items-center shadow-xl">
+                <div>
+                    <h2 class="text-2xl font-bold text-white mb-2 flex items-center gap-2">Proteção Ativa <i data-lucide="check-circle-2" class="text-emerald-500 w-6 h-6"></i></h2>
+                    <p class="text-slate-300">Todos os filtros estão operando corretamente.</p>
+                </div>
+                <button class="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-lg font-bold flex items-center gap-2 transition-all shadow-lg shadow-indigo-500/20">
+                    <i data-lucide="monitor-smartphone" class="w-5 h-5"></i> Espelhar Tela
                 </button>
-                <p class="text-xs text-slate-500 text-center">Isso apagará o perfil salvo neste navegador.</p>
             </div>
         </main>
     </div>
 
     <script>
         lucide.createIcons();
-        function desconectar() {
-            // Limpa a memória para testar do zero
-            localStorage.removeItem('guardian_perfil_criado');
-            localStorage.removeItem('guardian_dados_criancas');
-            window.location.href = 'index.html';
-        }
+
+        // MOTOR DE DADOS DINÂMICOS
         document.addEventListener('DOMContentLoaded', () => {
             const dados = localStorage.getItem('guardian_dados_criancas');
             if (dados) {
-                const p = JSON.parse(dados)[0];
-                document.getElementById('nomeSidebar').innerText = p.nome;
-                const el = document.getElementById('letraSidebar');
-                if (p.foto) el.innerHTML = `<img src="${p.foto}" class="w-full h-full object-cover">`;
-                else el.innerText = p.nome.charAt(0).toUpperCase();
+                const perfis = JSON.parse(dados);
+                if (perfis.length > 0) {
+                    const p = perfis[0];
+                    // Atualiza os nomes salvos
+                    document.getElementById('nomeHeader').innerText = p.nome;
+                    document.getElementById('nomeSidebar').innerText = p.nome;
+                    
+                    const elCirculo = document.getElementById('letraSidebar');
+                    if (p.foto) {
+                        // Carrega a foto cadastrada
+                        elCirculo.innerHTML = `<img src="${p.foto}" class="w-full h-full object-cover">`;
+                    } else {
+                        // Ou a inicial do nome
+                        elCirculo.innerText = p.nome.charAt(0).toUpperCase();
+                    }
+                }
             }
         });
     </script>
