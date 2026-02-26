@@ -25,32 +25,23 @@
             </div>
             
             <nav class="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="index.html">
-                    <i data-lucide="layout-dashboard" class="h-5 w-5"></i><span>Painel</span>
-                </a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="tempo.html">
-                    <i data-lucide="clock" class="h-5 w-5"></i><span>Tempo de Tela</span>
-                </a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="apps.html">
-                    <i data-lucide="app-window" class="h-5 w-5"></i><span>Aplicativos</span>
-                </a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="localizacao.html">
-                    <i data-lucide="map-pin" class="h-5 w-5"></i><span>Localização</span>
-                </a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-indigo-500/20 text-indigo-400" href="filtro.html">
-                    <i data-lucide="shield" class="h-5 w-5"></i><span>Filtro Web</span>
-                </a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="relatorios.html">
-                    <i data-lucide="bar-chart-2" class="h-5 w-5"></i><span>Relatórios</span>
-                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="index.html"><i data-lucide="layout-dashboard" class="h-5 w-5"></i><span>Painel</span></a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="tempo.html"><i data-lucide="clock" class="h-5 w-5"></i><span>Tempo de Tela</span></a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="apps.html"><i data-lucide="app-window" class="h-5 w-5"></i><span>Aplicativos</span></a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="localizacao.html"><i data-lucide="map-pin" class="h-5 w-5"></i><span>Localização</span></a>
+                
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-indigo-500/20 text-indigo-400" href="filtro.html"><i data-lucide="shield" class="h-5 w-5"></i><span>Filtro Web</span></a>
+                
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="relatorios.html"><i data-lucide="bar-chart-2" class="h-5 w-5"></i><span>Relatórios</span></a>
+                
+                <div class="my-2 border-t border-slate-700/50"></div>
+                
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="configuracoes.html"><i data-lucide="settings" class="h-5 w-5"></i><span>Configurações</span></a>
             </nav>
-
+            
             <div class="p-4 border-t border-slate-700/50 flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-white text-sm font-bold">M</div>
-                <div>
-                    <p class="text-sm font-medium text-white">Miguel</p>
-                    <p class="text-xs text-emerald-400">Online agora</p>
-                </div>
+                <div id="letraSidebar" class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-white text-sm font-bold">M</div>
+                <div><p id="nomeSidebar" class="text-sm font-medium text-white">Miguel</p><p class="text-xs text-emerald-400">Online agora</p></div>
             </div>
         </aside>
 
@@ -63,75 +54,145 @@
             <div class="bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-xl border border-indigo-500/30 p-5 mb-6">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-lg bg-indigo-500/30 flex items-center justify-center">
-                            <i data-lucide="shield-check" class="h-5 w-5 text-indigo-400"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-semibold text-white">Busca Segura (SafeSearch)</h3>
-                            <p class="text-sm text-slate-400">Filtra resultados impróprios no Google, Bing e outros buscadores</p>
-                        </div>
+                        <div class="w-10 h-10 rounded-lg bg-indigo-500/30 flex items-center justify-center"><i data-lucide="shield-check" class="h-5 w-5 text-indigo-400"></i></div>
+                        <div><h3 class="text-lg font-semibold text-white">Busca Segura (SafeSearch)</h3><p class="text-sm text-slate-400">Filtra resultados impróprios no Google e Bing</p></div>
                     </div>
-                    <span class="text-emerald-400 font-bold text-sm">ATIVO</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" class="sr-only peer" checked>
+                        <div class="w-11 h-6 bg-slate-700 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500"></div>
+                    </label>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
-                    <h3 class="text-lg font-semibold text-white mb-4">Categorias de Conteúdo</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div class="p-4 rounded-lg border border-red-500/30 bg-red-500/5">
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-sm font-medium text-white">🔞 Adulto</span>
-                                <span class="text-red-400 text-xs">Bloqueado</span>
-                            </div>
-                            <p class="text-xs text-slate-400">Sites com conteúdo impróprio</p>
+            <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-6 mb-8">
+                <h3 class="text-lg font-semibold text-white mb-6">Categorias de Conteúdo</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-5 rounded-lg border border-red-500/30 bg-[#1E293B]">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-2"><span class="text-xl">🔞</span><span class="text-base font-semibold text-white">Conteúdo Adulto</span></div>
+                            <label class="relative inline-flex items-center cursor-pointer"><input type="checkbox" class="sr-only peer"><div class="w-11 h-6 bg-slate-700 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500"></div></label>
                         </div>
-                        <div class="p-4 rounded-lg border border-red-500/30 bg-red-500/5">
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-sm font-medium text-white">⚔️ Violência</span>
-                                <span class="text-red-400 text-xs">Bloqueado</span>
-                            </div>
-                            <p class="text-xs text-slate-400">Conteúdo violento e gore</p>
+                        <p class="text-sm text-slate-400 mb-4">Sites com conteúdo impróprio para menores</p>
+                        <span class="px-3 py-1 rounded-full text-xs font-medium border border-red-500/30 text-red-400 bg-red-500/10">Alto Risco</span>
+                    </div>
+
+                    <div class="p-5 rounded-lg border border-red-500/30 bg-[#1E293B]">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-2"><span class="text-xl">🎰</span><span class="text-base font-semibold text-white">Jogos de Azar</span></div>
+                            <label class="relative inline-flex items-center cursor-pointer"><input type="checkbox" class="sr-only peer"><div class="w-11 h-6 bg-slate-700 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500"></div></label>
                         </div>
-                        <div class="p-4 rounded-lg border border-red-500/30 bg-red-500/5">
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-sm font-medium text-white">🎰 Apostas</span>
-                                <span class="text-red-400 text-xs">Bloqueado</span>
-                            </div>
-                            <p class="text-xs text-slate-400">Cassinos online</p>
+                        <p class="text-sm text-slate-400 mb-4">Cassinos online e apostas</p>
+                        <span class="px-3 py-1 rounded-full text-xs font-medium border border-red-500/30 text-red-400 bg-red-500/10">Alto Risco</span>
+                    </div>
+
+                    <div class="p-5 rounded-lg border border-red-500/30 bg-[#1E293B]">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-2"><span class="text-xl">⚔️</span><span class="text-base font-semibold text-white">Violência</span></div>
+                            <label class="relative inline-flex items-center cursor-pointer"><input type="checkbox" class="sr-only peer"><div class="w-11 h-6 bg-slate-700 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500"></div></label>
                         </div>
-                        <div class="p-4 rounded-lg border border-slate-700 bg-slate-800/50">
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-sm font-medium text-white">🎬 Vídeos</span>
-                                <span class="text-emerald-400 text-xs">Permitido</span>
-                            </div>
-                            <p class="text-xs text-slate-400">YouTube, Netflix</p>
+                        <p class="text-sm text-slate-400 mb-4">Conteúdo violento e gore</p>
+                        <span class="px-3 py-1 rounded-full text-xs font-medium border border-red-500/30 text-red-400 bg-red-500/10">Alto Risco</span>
+                    </div>
+
+                    <div class="p-5 rounded-lg border border-slate-700 bg-[#1E293B]">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-2"><span class="text-xl">📱</span><span class="text-base font-semibold text-white">Redes Sociais</span></div>
+                            <label class="relative inline-flex items-center cursor-pointer"><input type="checkbox" class="sr-only peer" checked><div class="w-11 h-6 bg-slate-700 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500"></div></label>
                         </div>
+                        <p class="text-sm text-slate-400 mb-4">Facebook, Twitter, Instagram, etc.</p>
+                        <span class="px-3 py-1 rounded-full text-xs font-medium border border-amber-500/30 text-amber-400 bg-amber-500/10">Médio Risco</span>
+                    </div>
+
+                    <div class="p-5 rounded-lg border border-slate-700 bg-[#1E293B]">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-2"><span class="text-xl">🎬</span><span class="text-base font-semibold text-white">Streaming de Vídeo</span></div>
+                            <label class="relative inline-flex items-center cursor-pointer"><input type="checkbox" class="sr-only peer" checked><div class="w-11 h-6 bg-slate-700 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500"></div></label>
+                        </div>
+                        <p class="text-sm text-slate-400 mb-4">YouTube, Netflix, Twitch, etc.</p>
+                        <span class="px-3 py-1 rounded-full text-xs font-medium border border-emerald-500/30 text-emerald-400 bg-emerald-500/10">Baixo Risco</span>
+                    </div>
+
+                    <div class="p-5 rounded-lg border border-slate-700 bg-[#1E293B]">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-2"><span class="text-xl">🛒</span><span class="text-base font-semibold text-white">Compras Online</span></div>
+                            <label class="relative inline-flex items-center cursor-pointer"><input type="checkbox" class="sr-only peer" checked><div class="w-11 h-6 bg-slate-700 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500"></div></label>
+                        </div>
+                        <p class="text-sm text-slate-400 mb-4">Amazon, Mercado Livre, etc.</p>
+                        <span class="px-3 py-1 rounded-full text-xs font-medium border border-emerald-500/30 text-emerald-400 bg-emerald-500/10">Baixo Risco</span>
+                    </div>
+
+                    <div class="p-5 rounded-lg border border-slate-700 bg-[#1E293B]">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-2"><span class="text-xl">🎮</span><span class="text-base font-semibold text-white">Jogos Online</span></div>
+                            <label class="relative inline-flex items-center cursor-pointer"><input type="checkbox" class="sr-only peer" checked><div class="w-11 h-6 bg-slate-700 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500"></div></label>
+                        </div>
+                        <p class="text-sm text-slate-400 mb-4">Sites de jogos e gaming</p>
+                        <span class="px-3 py-1 rounded-full text-xs font-medium border border-amber-500/30 text-amber-400 bg-amber-500/10">Médio Risco</span>
+                    </div>
+
+                    <div class="p-5 rounded-lg border border-slate-700 bg-[#1E293B]">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-2"><span class="text-xl">📰</span><span class="text-base font-semibold text-white">Notícias</span></div>
+                            <label class="relative inline-flex items-center cursor-pointer"><input type="checkbox" class="sr-only peer" checked><div class="w-11 h-6 bg-slate-700 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500"></div></label>
+                        </div>
+                        <p class="text-sm text-slate-400 mb-4">Portais de notícias e jornais</p>
+                        <span class="px-3 py-1 rounded-full text-xs font-medium border border-emerald-500/30 text-emerald-400 bg-emerald-500/10">Baixo Risco</span>
+                    </div>
+
+                    <div class="p-5 rounded-lg border border-red-500/30 bg-[#1E293B]">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-2"><span class="text-xl">💊</span><span class="text-base font-semibold text-white">Drogas e Álcool</span></div>
+                            <label class="relative inline-flex items-center cursor-pointer"><input type="checkbox" class="sr-only peer"><div class="w-11 h-6 bg-slate-700 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500"></div></label>
+                        </div>
+                        <p class="text-sm text-slate-400 mb-4">Conteúdo relacionado a substâncias</p>
+                        <span class="px-3 py-1 rounded-full text-xs font-medium border border-red-500/30 text-red-400 bg-red-500/10">Alto Risco</span>
+                    </div>
+
+                    <div class="p-5 rounded-lg border border-slate-700 bg-[#1E293B]">
+                        <div class="flex items-start justify-between mb-2">
+                            <div class="flex items-center gap-2"><span class="text-xl">💬</span><span class="text-base font-semibold text-white">Fóruns e Chats</span></div>
+                            <label class="relative inline-flex items-center cursor-pointer"><input type="checkbox" class="sr-only peer" checked><div class="w-11 h-6 bg-slate-700 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500"></div></label>
+                        </div>
+                        <p class="text-sm text-slate-400 mb-4">Reddit, Discord, fóruns anônimos</p>
+                        <span class="px-3 py-1 rounded-full text-xs font-medium border border-amber-500/30 text-amber-400 bg-amber-500/10">Médio Risco</span>
                     </div>
                 </div>
+            </div>
+        </main>
+    </div>
 
-                <div class="space-y-6">
-                    <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
-                        <h3 class="text-base font-semibold text-white mb-3 flex items-center gap-2">
-                            <i data-lucide="x-circle" class="h-4 w-4 text-red-400"></i> Sites Bloqueados
-                        </h3>
-                        <div class="space-y-2">
-                            <div class="flex items-center justify-between p-2 rounded bg-slate-800/50">
-                                <div class="flex items-center gap-2"><i data-lucide="globe" class="h-3 w-3 text-red-400"></i><span class="text-sm text-slate-300">bet365.com</span></div>
-                            </div>
-                            <div class="flex items-center justify-between p-2 rounded bg-slate-800/50">
-                                <div class="flex items-center gap-2"><i data-lucide="globe" class="h-3 w-3 text-red-400"></i><span class="text-sm text-slate-300">4chan.org</span></div>
-                            </div>
-                            <div class="flex items-center justify-between p-2 rounded bg-slate-800/50">
-                                <div class="flex items-center gap-2"><i data-lucide="globe" class="h-3 w-3 text-red-400"></i><span class="text-sm text-slate-300">omegle.com</span></div>
-                            </div>
-                        </div>
-                    </div>
+    <script>
+        lucide.createIcons();
 
-                    <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
-                        <h3 class="text-base font-semibold text-white mb-3 flex items-center gap-2">
-                            <i data-lucide="check-circle-2" class="h-4 w-4 text-emerald-400"></i> Sites Permitidos
-                        </h3>
-                        <div class="space-y-2">
-                            <div class="flex items-center justify-between p-2 rounded bg-slate-800/50">
-                                <div class="flex items-center gap-2"><i data-lucide="globe" class="h-3 w-3 text-emerald-400"></i><span class="text-sm text
+        document.addEventListener('DOMContentLoaded', () => {
+            const dadosSalvos = localStorage.getItem('guardian_dados_criancas');
+            
+            if (dadosSalvos) {
+                try {
+                    const perfis = JSON.parse(dadosSalvos);
+                    if (perfis.length > 0) {
+                        const perfilAtivo = perfis[0];
+                        const nomeDaCrianca = perfilAtivo.nome;
+                        const primeiraLetra = nomeDaCrianca.charAt(0).toUpperCase();
+                        const fotoBase64 = perfilAtivo.foto;
+                        
+                        const elNomeSidebar = document.getElementById('nomeSidebar');
+                        if (elNomeSidebar) elNomeSidebar.innerText = nomeDaCrianca;
+                        
+                        const elLetraSidebar = document.getElementById('letraSidebar');
+                        if (elLetraSidebar) {
+                            if (fotoBase64) {
+                                elLetraSidebar.classList.remove('bg-gradient-to-br', 'from-emerald-400', 'to-cyan-500');
+                                elLetraSidebar.innerHTML = `<img src="${fotoBase64}" class="w-full h-full object-cover rounded-full shadow-sm">`;
+                            } else {
+                                elLetraSidebar.innerHTML = primeiraLetra;
+                            }
+                        }
+                    }
+                } catch(e) { console.error("Erro ao carregar perfil:", e); }
+            }
+        });
+    </script>
+</body>
+</html>

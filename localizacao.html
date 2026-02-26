@@ -25,59 +25,61 @@
             </div>
             
             <nav class="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="index.html">
-                    <i data-lucide="layout-dashboard" class="h-5 w-5"></i><span>Painel</span>
-                </a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="tempo.html">
-                    <i data-lucide="clock" class="h-5 w-5"></i><span>Tempo de Tela</span>
-                </a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="apps.html">
-                    <i data-lucide="app-window" class="h-5 w-5"></i><span>Aplicativos</span>
-                </a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-indigo-500/20 text-indigo-400" href="localizacao.html">
-                    <i data-lucide="map-pin" class="h-5 w-5"></i><span>Localização</span>
-                </a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="filtro.html">
-                    <i data-lucide="shield" class="h-5 w-5"></i><span>Filtro Web</span>
-                </a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="relatorios.html">
-                    <i data-lucide="bar-chart-2" class="h-5 w-5"></i><span>Relatórios</span>
-                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="index.html"><i data-lucide="layout-dashboard" class="h-5 w-5"></i><span>Painel</span></a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="tempo.html"><i data-lucide="clock" class="h-5 w-5"></i><span>Tempo de Tela</span></a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="apps.html"><i data-lucide="app-window" class="h-5 w-5"></i><span>Aplicativos</span></a>
+                
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-indigo-500/20 text-indigo-400" href="localizacao.html"><i data-lucide="map-pin" class="h-5 w-5"></i><span>Localização</span></a>
+                
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="filtro.html"><i data-lucide="shield" class="h-5 w-5"></i><span>Filtro Web</span></a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="relatorios.html"><i data-lucide="bar-chart-2" class="h-5 w-5"></i><span>Relatórios</span></a>
+                
+                <div class="my-2 border-t border-slate-700/50"></div>
+                
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="configuracoes.html"><i data-lucide="settings" class="h-5 w-5"></i><span>Configurações</span></a>
             </nav>
 
             <div class="p-4 border-t border-slate-700/50 flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-white text-sm font-bold">M</div>
+                <div id="letraSidebar" class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-white text-sm font-bold">M</div>
                 <div>
-                    <p class="text-sm font-medium text-white">Miguel</p>
+                    <p id="nomeSidebar" class="text-sm font-medium text-white">Miguel</p>
                     <p class="text-xs text-emerald-400">Online agora</p>
                 </div>
             </div>
         </aside>
 
         <main class="flex-1 md:ml-[260px] p-4 md:p-6 lg:p-8 overflow-auto">
-            <div class="mb-8 mt-12 md:mt-0">
-                <h1 class="text-2xl md:text-3xl font-bold text-white mb-2">Rastreamento de Localização</h1>
-                <p class="text-slate-400">Acompanhe a localização em tempo real</p>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 mt-12 md:mt-0 gap-4">
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-bold text-white mb-2">Rastreamento de Localização</h1>
+                    <p class="text-slate-400">Acompanhe a localização e o tempo de permanência</p>
+                </div>
+                
+                <button id="btnAtualizar" onclick="atualizarGPS()" class="inline-flex items-center justify-center gap-2 bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-bold transition-all shadow-lg shadow-indigo-500/20">
+                    <i id="iconeAtualizar" data-lucide="refresh-cw" class="w-4 h-4"></i>
+                    <span id="textoAtualizar">Atualizar GPS</span>
+                </button>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div class="lg:col-span-2 space-y-6">
-                    <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 overflow-hidden">
-                        <div class="relative h-[350px] md:h-[450px] bg-slate-800 flex items-center justify-center border-b border-slate-700/50">
+                    <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 overflow-hidden shadow-lg">
+                        <div class="relative h-[300px] md:h-[400px] bg-slate-800 flex items-center justify-center border-b border-slate-700/50">
                             <img src="https://mgx-backend-cdn.metadl.com/generate/images/989105/2026-02-25/c05b382a-354e-4a15-a87d-f147e03b4c3e.png" alt="Mapa" class="absolute inset-0 w-full h-full object-cover opacity-60">
                             
-                            <div class="absolute top-4 left-4 bg-[#0F172A]/90 backdrop-blur-sm rounded-lg p-3 border border-slate-700/50">
+                            <div class="absolute top-4 left-4 bg-[#0F172A]/90 backdrop-blur-md rounded-lg p-3 border border-slate-700/50 shadow-xl">
                                 <div class="flex items-center gap-2">
-                                    <div class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></div>
-                                    <span class="text-sm font-medium text-white">Localização Atual</span>
+                                    <div class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]"></div>
+                                    <span class="text-sm font-bold text-white">Localização Atual</span>
                                 </div>
-                                <p class="text-xs text-slate-400 mt-1">Rua das Flores, 123 - Casa</p>
-                                <p class="text-xs text-slate-500">Atualizado há 2 minutos</p>
+                                <p class="text-xs text-slate-300 mt-1">Rua das Flores, 123 - Casa</p>
+                                <p id="statusTempo" class="text-xs text-indigo-400 mt-1 font-medium">Atualizado há 2 minutos</p>
                             </div>
+                            
                             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                                 <div class="relative">
-                                    <div class="w-12 h-12 rounded-full bg-indigo-500/30 animate-ping absolute inset-0"></div>
-                                    <div class="w-12 h-12 rounded-full bg-indigo-500 flex items-center justify-center relative">
+                                    <div class="w-12 h-12 rounded-full bg-indigo-500/40 animate-ping absolute inset-0"></div>
+                                    <div class="w-12 h-12 rounded-full bg-indigo-500 flex items-center justify-center relative shadow-lg border-2 border-white/20">
                                         <i data-lucide="map-pin" class="h-6 w-6 text-white"></i>
                                     </div>
                                 </div>
@@ -85,59 +87,98 @@
                         </div>
                     </div>
 
-                    <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
-                        <h3 class="text-lg font-semibold text-white mb-4">Histórico de Locais Hoje</h3>
+                    <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-6 shadow-lg">
+                        <h3 class="text-lg font-semibold text-white mb-5 flex items-center gap-2">
+                            <i data-lucide="list-ordered" class="w-5 h-5 text-indigo-400"></i> Histórico de Locais Hoje
+                        </h3>
                         <div class="space-y-4">
-                            <div class="flex items-center gap-4">
-                                <div class="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400">
-                                    <i data-lucide="home" class="h-5 w-5"></i>
+                            <div class="flex items-center gap-4 p-3 bg-slate-800/40 rounded-lg border border-slate-700/30">
+                                <div class="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 flex-shrink-0"><i data-lucide="home" class="h-5 w-5"></i></div>
+                                <div class="flex-1">
+                                    <div class="flex justify-between items-start">
+                                        <p class="text-sm text-white font-bold">Casa</p>
+                                        <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded flex items-center gap-1"><i data-lucide="timer" class="w-3 h-3"></i> 2h 15m</span>
+                                    </div>
+                                    <p class="text-xs text-slate-400 mt-1">14:30 - Agora</p>
                                 </div>
-                                <div><p class="text-sm text-white font-medium">Casa</p><p class="text-xs text-slate-400">14:30 - Agora</p></div>
                             </div>
-                            <div class="flex items-center gap-4">
-                                <div class="w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400">
-                                    <i data-lucide="graduation-cap" class="h-5 w-5"></i>
+                            <div class="flex items-center gap-4 p-3 bg-slate-800/40 rounded-lg border border-red-500/30">
+                                <div class="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 flex-shrink-0"><i data-lucide="triangle-alert" class="h-5 w-5"></i></div>
+                                <div class="flex-1">
+                                    <div class="flex justify-between items-start">
+                                        <p class="text-sm text-red-400 font-bold">Área Desconhecida</p>
+                                        <span class="text-xs font-bold text-red-400 bg-red-500/10 border border-red-500/20 px-2 py-0.5 rounded flex items-center gap-1"><i data-lucide="timer" class="w-3 h-3"></i> 30m</span>
+                                    </div>
+                                    <p class="text-xs text-slate-400 mt-1">Av. Central, 980 <span class="mx-1">•</span> 12:15 - 12:45</p>
                                 </div>
-                                <div><p class="text-sm text-white font-medium">Escola</p><p class="text-xs text-slate-400">07:30 - 12:00</p></div>
                             </div>
-                            <div class="flex items-center gap-4">
-                                <div class="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center text-red-400">
-                                    <i data-lucide="triangle-alert" class="h-5 w-5"></i>
+                            <div class="flex items-center gap-4 p-3 bg-slate-800/40 rounded-lg border border-slate-700/30">
+                                <div class="w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 flex-shrink-0"><i data-lucide="graduation-cap" class="h-5 w-5"></i></div>
+                                <div class="flex-1">
+                                    <div class="flex justify-between items-start">
+                                        <p class="text-sm text-white font-bold">Escola</p>
+                                        <span class="text-xs font-bold text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2 py-0.5 rounded flex items-center gap-1"><i data-lucide="timer" class="w-3 h-3"></i> 4h 30m</span>
+                                    </div>
+                                    <p class="text-xs text-slate-400 mt-1">07:30 - 12:00</p>
                                 </div>
-                                <div><p class="text-sm text-red-400 font-medium">Área Desconhecida</p><p class="text-xs text-slate-400">12:15 - 12:45</p></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="space-y-6">
-                    <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
-                        <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-lg font-semibold text-white">Zonas Seguras</h3>
-                            <button class="bg-indigo-500 hover:bg-indigo-600 text-white text-xs px-3 py-1.5 rounded">+ Adicionar</button>
+                    <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-6 shadow-lg">
+                        <h3 class="text-lg font-semibold text-white mb-5 flex items-center gap-2">
+                            <i data-lucide="pie-chart" class="w-5 h-5 text-purple-400"></i> Permanência (Hoje)
+                        </h3>
+                        <div class="space-y-5">
+                            <div>
+                                <div class="flex justify-between text-sm mb-1.5"><span class="text-white font-medium">Escola</span><span class="text-indigo-400 font-bold">4h 30m</span></div>
+                                <div class="h-2.5 bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-indigo-500 rounded-full" style="width: 65%;"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1.5"><span class="text-white font-medium">Casa</span><span class="text-emerald-400 font-bold">2h 15m</span></div>
+                                <div class="h-2.5 bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-emerald-500 rounded-full" style="width: 35%;"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1.5"><span class="text-red-400 font-medium">Área Desconhecida</span><span class="text-red-400 font-bold">30m</span></div>
+                                <div class="h-2.5 bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-red-500 rounded-full" style="width: 10%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-6 shadow-lg">
+                        <div class="flex items-center justify-between mb-5">
+                            <h3 class="text-lg font-semibold text-white flex items-center gap-2"><i data-lucide="focus" class="w-5 h-5 text-emerald-400"></i> Zonas Seguras</h3>
+                            <button class="text-indigo-400 hover:text-indigo-300 p-1 bg-indigo-500/10 rounded"><i data-lucide="plus" class="w-4 h-4"></i></button>
                         </div>
                         <div class="space-y-3">
-                            <div class="flex items-center justify-between p-3 rounded-lg bg-slate-800/50">
-                                <div><p class="text-sm text-white">Casa</p><p class="text-xs text-slate-500">Raio: 200m</p></div>
-                                <span class="text-emerald-400 text-xs border border-emerald-500/30 bg-emerald-500/10 px-2 py-1 rounded">Ativa</span>
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-slate-800/40 border border-slate-700/50">
+                                <div><p class="text-sm font-bold text-white">Casa</p><p class="text-xs text-slate-400">Raio: 200m</p></div>
+                                <label class="relative inline-flex items-center cursor-pointer"><input type="checkbox" class="sr-only peer" checked><div class="w-11 h-6 bg-slate-700 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div></label>
                             </div>
-                            <div class="flex items-center justify-between p-3 rounded-lg bg-slate-800/50">
-                                <div><p class="text-sm text-white">Escola</p><p class="text-xs text-slate-500">Raio: 300m</p></div>
-                                <span class="text-emerald-400 text-xs border border-emerald-500/30 bg-emerald-500/10 px-2 py-1 rounded">Ativa</span>
-                            </div>
-                            <div class="flex items-center justify-between p-3 rounded-lg bg-slate-800/50">
-                                <div><p class="text-sm text-white">Parque</p><p class="text-xs text-slate-500">Raio: 500m</p></div>
-                                <span class="text-slate-500 text-xs border border-slate-600 px-2 py-1 rounded">Inativa</span>
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-slate-800/40 border border-slate-700/50">
+                                <div><p class="text-sm font-bold text-white">Escola</p><p class="text-xs text-slate-400">Raio: 300m</p></div>
+                                <label class="relative inline-flex items-center cursor-pointer"><input type="checkbox" class="sr-only peer" checked><div class="w-11 h-6 bg-slate-700 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div></label>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
-                        <h3 class="text-lg font-semibold text-white mb-4">Status do Dispositivo</h3>
-                        <div class="space-y-2 text-sm">
-                            <div class="flex justify-between"><span class="text-slate-400">Bateria</span><span class="text-emerald-400 font-bold">72%</span></div>
-                            <div class="flex justify-between"><span class="text-slate-400">Conexão</span><span class="text-white">Wi-Fi</span></div>
-                            <div class="flex justify-between"><span class="text-slate-400">GPS</span><span class="text-emerald-400">Ativo</span></div>
+                    <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-6 shadow-lg">
+                        <h3 class="text-sm font-semibold text-slate-300 mb-4 uppercase tracking-wider">Status do Dispositivo</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center bg-slate-800/30 p-2 rounded">
+                                <span class="text-slate-400 text-sm flex items-center gap-2"><i data-lucide="battery-charging" class="w-4 h-4 text-emerald-400"></i> Bateria</span>
+                                <span class="text-emerald-400 font-bold text-sm">72%</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-slate-800/30 p-2 rounded">
+                                <span class="text-slate-400 text-sm flex items-center gap-2"><i data-lucide="wifi" class="w-4 h-4 text-white"></i> Conexão</span>
+                                <span class="text-white font-medium text-sm">Wi-Fi (Casa)</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-slate-800/30 p-2 rounded">
+                                <span class="text-slate-400 text-sm flex items-center gap-2"><i data-lucide="satellite" class="w-4 h-4 text-indigo-400"></i> Sinal GPS</span>
+                                <span class="text-indigo-400 font-bold text-sm">Forte</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -145,6 +186,71 @@
         </main>
     </div>
 
-    <script>lucide.createIcons();</script>
+    <script>
+        lucide.createIcons();
+
+        // SIMULAÇÃO DO GPS
+        function atualizarGPS() {
+            const icone = document.getElementById('iconeAtualizar');
+            const texto = document.getElementById('textoAtualizar');
+            const statusTexto = document.getElementById('statusTempo');
+            const btn = document.getElementById('btnAtualizar');
+
+            icone.classList.add('animate-spin');
+            texto.innerText = "Buscando...";
+            btn.classList.add('opacity-80', 'cursor-not-allowed');
+
+            setTimeout(() => {
+                icone.classList.remove('animate-spin');
+                icone.setAttribute('data-lucide', 'check');
+                lucide.createIcons();
+                texto.innerText = "Sincronizado!";
+                btn.classList.remove('bg-indigo-500', 'hover:bg-indigo-600', 'opacity-80', 'cursor-not-allowed');
+                btn.classList.add('bg-emerald-500', 'hover:bg-emerald-600');
+                
+                statusTexto.innerText = "Atualizado agora mesmo";
+                statusTexto.classList.remove('text-indigo-400');
+                statusTexto.classList.add('text-emerald-400');
+
+                setTimeout(() => {
+                    icone.setAttribute('data-lucide', 'refresh-cw');
+                    lucide.createIcons();
+                    texto.innerText = "Atualizar GPS";
+                    btn.classList.remove('bg-emerald-500', 'hover:bg-emerald-600');
+                    btn.classList.add('bg-indigo-500', 'hover:bg-indigo-600');
+                }, 3000);
+            }, 2000);
+        }
+
+        // MOTOR UNIVERSAL PARA PUXAR FOTO E NOME
+        document.addEventListener('DOMContentLoaded', () => {
+            const dadosSalvos = localStorage.getItem('guardian_dados_criancas');
+            
+            if (dadosSalvos) {
+                try {
+                    const perfis = JSON.parse(dadosSalvos);
+                    if (perfis.length > 0) {
+                        const perfilAtivo = perfis[0];
+                        const nomeDaCrianca = perfilAtivo.nome;
+                        const primeiraLetra = nomeDaCrianca.charAt(0).toUpperCase();
+                        const fotoBase64 = perfilAtivo.foto;
+                        
+                        const elNomeSidebar = document.getElementById('nomeSidebar');
+                        if (elNomeSidebar) elNomeSidebar.innerText = nomeDaCrianca;
+                        
+                        const elLetraSidebar = document.getElementById('letraSidebar');
+                        if (elLetraSidebar) {
+                            if (fotoBase64) {
+                                elLetraSidebar.classList.remove('bg-gradient-to-br', 'from-emerald-400', 'to-cyan-500');
+                                elLetraSidebar.innerHTML = `<img src="${fotoBase64}" class="w-full h-full object-cover rounded-full shadow-sm">`;
+                            } else {
+                                elLetraSidebar.innerHTML = primeiraLetra;
+                            }
+                        }
+                    }
+                } catch(e) { console.error("Erro ao carregar perfil:", e); }
+            }
+        });
+    </script>
 </body>
 </html>

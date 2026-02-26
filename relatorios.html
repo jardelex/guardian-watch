@@ -8,6 +8,12 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body { background-color: #0F172A; color: white; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; }
+        
+        /* CSS para a barra de rolagem do Tooltip não quebrar o visual */
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #64748b; }
     </style>
 </head>
 <body>
@@ -25,32 +31,21 @@
             </div>
             
             <nav class="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="index.html">
-                    <i data-lucide="layout-dashboard" class="h-5 w-5"></i><span>Painel</span>
-                </a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="tempo.html">
-                    <i data-lucide="clock" class="h-5 w-5"></i><span>Tempo de Tela</span>
-                </a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="apps.html">
-                    <i data-lucide="app-window" class="h-5 w-5"></i><span>Aplicativos</span>
-                </a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="localizacao.html">
-                    <i data-lucide="map-pin" class="h-5 w-5"></i><span>Localização</span>
-                </a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="filtro.html">
-                    <i data-lucide="shield" class="h-5 w-5"></i><span>Filtro Web</span>
-                </a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-indigo-500/20 text-indigo-400" href="relatorios.html">
-                    <i data-lucide="bar-chart-2" class="h-5 w-5"></i><span>Relatórios</span>
-                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="index.html"><i data-lucide="layout-dashboard" class="h-5 w-5"></i><span>Painel</span></a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="tempo.html"><i data-lucide="clock" class="h-5 w-5"></i><span>Tempo de Tela</span></a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="apps.html"><i data-lucide="app-window" class="h-5 w-5"></i><span>Aplicativos</span></a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="localizacao.html"><i data-lucide="map-pin" class="h-5 w-5"></i><span>Localização</span></a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="filtro.html"><i data-lucide="shield" class="h-5 w-5"></i><span>Filtro Web</span></a>
+                
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-indigo-500/20 text-indigo-400" href="relatorios.html"><i data-lucide="bar-chart-2" class="h-5 w-5"></i><span>Relatórios</span></a>
+                
+                <div class="my-2 border-t border-slate-700/50"></div>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="configuracoes.html"><i data-lucide="settings" class="h-5 w-5"></i><span>Configurações</span></a>
             </nav>
 
             <div class="p-4 border-t border-slate-700/50 flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-white text-sm font-bold">M</div>
-                <div>
-                    <p class="text-sm font-medium text-white">Miguel</p>
-                    <p class="text-xs text-emerald-400">Online agora</p>
-                </div>
+                <div id="letraSidebar" class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-white text-sm font-bold">M</div>
+                <div><p id="nomeSidebar" class="text-sm font-medium text-white">Miguel</p><p class="text-xs text-emerald-400">Online agora</p></div>
             </div>
         </aside>
 
@@ -66,22 +61,309 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                 <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
-                    <div class="flex items-center gap-2 mb-2">
-                        <i data-lucide="clock" class="h-4 w-4 text-indigo-400"></i>
-                        <span class="text-sm text-slate-400">Tempo Total</span>
-                    </div>
-                    <p class="text-2xl font-bold text-white">26.3h</p>
-                    <p class="text-xs text-emerald-400 mt-1 flex items-center gap-1"><i data-lucide="trending-down" class="h-3 w-3"></i> -13.2% vs anterior</p>
+                    <div class="flex items-center gap-2 mb-2"><i data-lucide="clock" class="h-4 w-4 text-indigo-400"></i><span class="text-sm text-slate-400">Tempo Total</span></div>
+                    <p class="text-2xl font-bold text-white">26.3h</p><p class="text-xs text-emerald-400 mt-1 flex items-center gap-1"><i data-lucide="trending-down" class="h-3 w-3"></i> -13.2% vs anterior</p>
                 </div>
                 <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
-                    <div class="flex items-center gap-2 mb-2">
-                        <i data-lucide="app-window" class="h-4 w-4 text-purple-400"></i>
-                        <span class="text-sm text-slate-400">Apps Usados</span>
-                    </div>
-                    <p class="text-2xl font-bold text-white">34</p>
-                    <p class="text-xs text-slate-500 mt-1">De 42 instalados</p>
+                    <div class="flex items-center gap-2 mb-2"><i data-lucide="app-window" class="h-4 w-4 text-purple-400"></i><span class="text-sm text-slate-400">Apps Usados</span></div>
+                    <p class="text-2xl font-bold text-white">34</p><p class="text-xs text-slate-500 mt-1">De 42 instalados</p>
                 </div>
                 <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
-                    <div class="flex items-center gap-2 mb-2">
+                    <div class="flex items-center gap-2 mb-2"><i data-lucide="shield-alert" class="h-4 w-4 text-red-400"></i><span class="text-sm text-slate-400">Bloqueios</span></div>
+                    <p class="text-2xl font-bold text-white">29</p><p class="text-xs text-slate-500 mt-1">Tentativas esta semana</p>
+                </div>
+                <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
+                    <div class="flex items-center gap-2 mb-2"><i data-lucide="globe" class="h-4 w-4 text-emerald-400"></i><span class="text-sm text-slate-400">Sites Visitados</span></div>
+                    <p class="text-2xl font-bold text-white">156</p><p class="text-xs text-slate-500 mt-1">Sites únicos</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 mb-6">
+                <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
+                    <h3 class="text-lg font-semibold text-white mb-1">Tempo de Tela (Interativo)</h3>
+                    <p class="text-xs text-slate-400 mb-6">Passe o mouse nas barras para ver o App mais usado.</p>
+                    
+                    <div class="relative h-64 flex items-end justify-between px-2 sm:px-6 pb-6 pt-4 border-b border-slate-700">
+                        <div class="absolute left-0 top-0 bottom-6 flex flex-col justify-between text-xs text-slate-500 pr-2 pb-2">
+                            <span>8h</span><span>6h</span><span>4h</span><span>2h</span><span>0h</span>
+                        </div>
+
+                        <div class="group relative flex flex-col items-center justify-end h-full w-8 sm:w-12 ml-6">
+                            <div class="opacity-0 group-hover:opacity-100 absolute bottom-full mb-2 w-36 bg-slate-900 border border-slate-600 rounded-lg p-2 text-center transition-all z-20 shadow-2xl pointer-events-none">
+                                <p class="font-bold text-white text-xs border-b border-slate-700 pb-1 mb-1">Segunda</p>
+                                <p class="text-indigo-400 text-xs font-bold">▶️ YouTube (1h 20m)</p>
+                            </div>
+                            <div class="flex gap-1 items-end h-full w-full justify-center">
+                                <div class="w-3 sm:w-4 bg-slate-600 rounded-t-sm" style="height: 40%"></div>
+                                <div class="w-3 sm:w-4 bg-indigo-500 rounded-t-sm hover:bg-indigo-400 cursor-pointer" style="height: 35%"></div>
+                            </div>
+                            <span class="text-xs text-slate-500 mt-2 absolute -bottom-6">Seg</span>
+                        </div>
+
+                        <div class="group relative flex flex-col items-center justify-end h-full w-8 sm:w-12">
+                            <div class="opacity-0 group-hover:opacity-100 absolute bottom-full mb-2 w-36 bg-slate-900 border border-slate-600 rounded-lg p-2 text-center transition-all z-20 shadow-2xl pointer-events-none">
+                                <p class="font-bold text-white text-xs border-b border-slate-700 pb-1 mb-1">Terça</p>
+                                <p class="text-purple-400 text-xs font-bold">🎵 TikTok (1h 45m)</p>
+                            </div>
+                            <div class="flex gap-1 items-end h-full w-full justify-center">
+                                <div class="w-3 sm:w-4 bg-slate-600 rounded-t-sm" style="height: 35%"></div>
+                                <div class="w-3 sm:w-4 bg-indigo-500 rounded-t-sm hover:bg-indigo-400 cursor-pointer" style="height: 50%"></div>
+                            </div>
+                            <span class="text-xs text-slate-500 mt-2 absolute -bottom-6">Ter</span>
+                        </div>
+                        
+                        <div class="group relative flex flex-col items-center justify-end h-full w-8 sm:w-12">
+                            <div class="opacity-0 group-hover:opacity-100 absolute bottom-full mb-2 w-36 bg-slate-900 border border-slate-600 rounded-lg p-2 text-center transition-all z-20 shadow-2xl pointer-events-none">
+                                <p class="font-bold text-white text-xs border-b border-slate-700 pb-1 mb-1">Quarta</p>
+                                <p class="text-amber-400 text-xs font-bold">🎮 Roblox (2h 15m)</p>
+                            </div>
+                            <div class="flex gap-1 items-end h-full w-full justify-center">
+                                <div class="w-3 sm:w-4 bg-slate-600 rounded-t-sm" style="height: 50%"></div>
+                                <div class="w-3 sm:w-4 bg-indigo-500 rounded-t-sm hover:bg-indigo-400 cursor-pointer" style="height: 45%"></div>
+                            </div>
+                            <span class="text-xs text-slate-500 mt-2 absolute -bottom-6">Qua</span>
+                        </div>
+
+                        <div class="group relative flex flex-col items-center justify-end h-full w-8 sm:w-12">
+                            <div class="opacity-0 group-hover:opacity-100 absolute bottom-full mb-2 w-36 bg-slate-900 border border-slate-600 rounded-lg p-2 text-center transition-all z-20 shadow-2xl pointer-events-none">
+                                <p class="font-bold text-white text-xs border-b border-slate-700 pb-1 mb-1">Quinta</p>
+                                <p class="text-emerald-400 text-xs font-bold">⛏️ Minecraft (1h 50m)</p>
+                            </div>
+                            <div class="flex gap-1 items-end h-full w-full justify-center">
+                                <div class="w-3 sm:w-4 bg-slate-600 rounded-t-sm" style="height: 30%"></div>
+                                <div class="w-3 sm:w-4 bg-indigo-500 rounded-t-sm hover:bg-indigo-400 cursor-pointer" style="height: 40%"></div>
+                            </div>
+                            <span class="text-xs text-slate-500 mt-2 absolute -bottom-6">Qui</span>
+                        </div>
+
+                        <div class="group relative flex flex-col items-center justify-end h-full w-8 sm:w-12">
+                            <div class="opacity-0 group-hover:opacity-100 absolute bottom-full mb-2 w-36 bg-slate-900 border border-slate-600 rounded-lg p-2 text-center transition-all z-20 shadow-2xl pointer-events-none">
+                                <p class="font-bold text-white text-xs border-b border-slate-700 pb-1 mb-1">Sexta</p>
+                                <p class="text-red-400 text-xs font-bold">▶️ YouTube (3h 00m)</p>
+                            </div>
+                            <div class="flex gap-1 items-end h-full w-full justify-center">
+                                <div class="w-3 sm:w-4 bg-slate-600 rounded-t-sm" style="height: 55%"></div>
+                                <div class="w-3 sm:w-4 bg-indigo-500 rounded-t-sm hover:bg-indigo-400 cursor-pointer" style="height: 65%"></div>
+                            </div>
+                            <span class="text-xs text-slate-500 mt-2 absolute -bottom-6">Sex</span>
+                        </div>
+
+                        <div class="group relative flex flex-col items-center justify-end h-full w-8 sm:w-12">
+                            <div class="opacity-0 group-hover:opacity-100 absolute bottom-full mb-2 w-36 bg-slate-900 border border-slate-600 rounded-lg p-2 text-center transition-all z-20 shadow-2xl pointer-events-none">
+                                <p class="font-bold text-white text-xs border-b border-slate-700 pb-1 mb-1">Sábado</p>
+                                <p class="text-amber-400 text-xs font-bold">🎮 Roblox (4h 30m)</p>
+                            </div>
+                            <div class="flex gap-1 items-end h-full w-full justify-center">
+                                <div class="w-3 sm:w-4 bg-slate-600 rounded-t-sm" style="height: 70%"></div>
+                                <div class="w-3 sm:w-4 bg-indigo-500 rounded-t-sm hover:bg-indigo-400 cursor-pointer" style="height: 60%"></div>
+                            </div>
+                            <span class="text-xs text-slate-500 mt-2 absolute -bottom-6">Sáb</span>
+                        </div>
+
+                        <div class="group relative flex flex-col items-center justify-end h-full w-8 sm:w-12">
+                            <div class="opacity-0 group-hover:opacity-100 absolute bottom-full mb-2 w-36 bg-slate-900 border border-slate-600 rounded-lg p-2 text-center transition-all z-20 shadow-2xl pointer-events-none">
+                                <p class="font-bold text-white text-xs border-b border-slate-700 pb-1 mb-1">Domingo</p>
+                                <p class="text-red-400 text-xs font-bold">🎬 Netflix (3h 20m)</p>
+                            </div>
+                            <div class="flex gap-1 items-end h-full w-full justify-center">
+                                <div class="w-3 sm:w-4 bg-slate-600 rounded-t-sm" style="height: 65%"></div>
+                                <div class="w-3 sm:w-4 bg-indigo-500 rounded-t-sm hover:bg-indigo-400 cursor-pointer" style="height: 55%"></div>
+                            </div>
+                            <span class="text-xs text-slate-500 mt-2 absolute -bottom-6">Dom</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
+                    <h3 class="text-lg font-semibold text-white mb-4">Uso por Categoria</h3>
+                    <div class="flex items-center justify-center gap-4 mt-8">
+                        <svg width="200" height="200" viewBox="0 0 230 250">
+                            <path name="Entretenimento" fill="#EF4444" d="M 200,125 A 85,85,0,0,0,51.8,68.1 L 74.1,88.1 A 55,55,0,0,1,170,125 Z"></path>
+                            <path name="Redes Sociais" fill="#8B5CF6" d="M 48.9,71.5 A 85,85,0,0,0,57.3,187.4 L 77.6,165.3 A 55,55,0,0,1,72.2,90.3 Z"></path>
+                            <path name="Educação" fill="#10B981" d="M 60.6,190.3 A 85,85,0,0,0,132.6,208.1 L 126.4,178.7 A 55,55,0,0,1,79.8,167.2 Z"></path>
+                            <path name="Jogos" fill="#F59E0B" d="M 136.9,207.1 A 85,85,0,0,0,185.7,172.0 L 160.8,155.4 A 55,55,0,0,1,129.2,178.1 Z"></path>
+                            <path name="Comunicação" fill="#6366F1" d="M 188.1,168.2 A 85,85,0,0,0,199.8,129.4 L 169.9,127.8 A 55,55,0,0,1,162.3,152.9 Z"></path>
+                        </svg>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><span class="text-sm text-slate-300">Entretenimento</span></div>
+                            <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-purple-500"></div><span class="text-sm text-slate-300">Social</span></div>
+                            <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-emerald-500"></div><span class="text-sm text-slate-300">Educação</span></div>
+                            <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-amber-500"></div><span class="text-sm text-slate-300">Jogos</span></div>
+                            <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-indigo-500"></div><span class="text-sm text-slate-300">Chat</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                
+                <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
+                    <h3 class="text-lg font-semibold text-white mb-4">Apps Mais Usados</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-4 p-3 rounded-lg bg-slate-800/50">
+                            <span class="text-lg font-bold text-slate-500 w-6">1</span>
+                            <div class="flex-1"><p class="text-sm font-medium text-white">YouTube</p><p class="text-xs text-slate-500">Vídeo</p></div>
+                            <div class="text-right"><p class="text-sm font-medium text-white">5h 30min</p><p class="text-xs text-emerald-400 flex items-center justify-end gap-1"><i data-lucide="trending-down" class="h-3 w-3"></i> 12%</p></div>
+                        </div>
+                        <div class="flex items-center gap-4 p-3 rounded-lg bg-slate-800/50">
+                            <span class="text-lg font-bold text-slate-500 w-6">2</span>
+                            <div class="flex-1"><p class="text-sm font-medium text-white">TikTok</p><p class="text-xs text-slate-500">Redes Sociais</p></div>
+                            <div class="text-right"><p class="text-sm font-medium text-white">3h 45min</p><p class="text-xs text-red-400 flex items-center justify-end gap-1"><i data-lucide="trending-up" class="h-3 w-3"></i> 8%</p></div>
+                        </div>
+                        <div class="flex items-center gap-4 p-3 rounded-lg bg-slate-800/50">
+                            <span class="text-lg font-bold text-slate-500 w-6">3</span>
+                            <div class="flex-1"><p class="text-sm font-medium text-white">Roblox</p><p class="text-xs text-slate-500">Jogos</p></div>
+                            <div class="text-right"><p class="text-sm font-medium text-white">3h 10min</p><p class="text-xs text-emerald-400 flex items-center justify-end gap-1"><i data-lucide="trending-down" class="h-3 w-3"></i> 5%</p></div>
+                        </div>
+                        <div class="flex items-center gap-4 p-3 rounded-lg bg-slate-800/50">
+                            <span class="text-lg font-bold text-slate-500 w-6">4</span>
+                            <div class="flex-1"><p class="text-sm font-medium text-white">WhatsApp</p><p class="text-xs text-slate-500">Mensagens</p></div>
+                            <div class="text-right"><p class="text-sm font-medium text-white">2h 00min</p><p class="text-xs text-red-400 flex items-center justify-end gap-1"><i data-lucide="trending-up" class="h-3 w-3"></i> 2%</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5">
+                    <h3 class="text-lg font-semibold text-white mb-1">Tentativas de Acesso Bloqueadas</h3>
+                    <p class="text-xs text-slate-400 mb-6">Passe o mouse para ver os sites e apps bloqueados.</p>
+                    
+                    <div class="relative h-64 flex items-end justify-between px-2 sm:px-6 pb-6 pt-4 border-b border-slate-700">
+                        <div class="absolute left-0 top-0 bottom-6 flex flex-col justify-between text-xs text-slate-500 pr-2 pb-2">
+                            <span>8</span><span>6</span><span>4</span><span>2</span><span>0</span>
+                        </div>
+
+                        <div class="group relative flex flex-col items-center justify-end h-full w-8 sm:w-14 ml-6 cursor-pointer">
+                            <div class="opacity-0 group-hover:opacity-100 absolute bottom-full mb-1 w-48 bg-slate-900 border border-slate-600 rounded-lg p-3 text-left transition-all z-30 shadow-2xl pointer-events-auto max-h-36 overflow-y-auto custom-scrollbar">
+                                <p class="font-bold text-white text-xs border-b border-slate-700 pb-1 mb-2 text-center">Segunda (5 Bloqueios)</p>
+                                <ul class="space-y-1.5 text-xs text-slate-300">
+                                    <li class="flex justify-between items-center"><span class="truncate">bet365.com</span><span class="text-red-400 ml-1 font-bold">x3</span></li>
+                                    <li class="flex justify-between items-center"><span class="truncate">Free Fire</span><span class="text-red-400 ml-1 font-bold">x2</span></li>
+                                </ul>
+                            </div>
+                            <div class="w-full bg-red-500 rounded-t-sm group-hover:bg-red-400 transition-colors" style="height: 62.5%"></div>
+                            <span class="text-xs text-slate-500 mt-2 absolute -bottom-6">Seg</span>
+                        </div>
+
+                        <div class="group relative flex flex-col items-center justify-end h-full w-8 sm:w-14 cursor-pointer">
+                            <div class="opacity-0 group-hover:opacity-100 absolute bottom-full mb-1 w-48 bg-slate-900 border border-slate-600 rounded-lg p-3 text-left transition-all z-30 shadow-2xl pointer-events-auto max-h-36 overflow-y-auto custom-scrollbar">
+                                <p class="font-bold text-white text-xs border-b border-slate-700 pb-1 mb-2 text-center">Terça (3 Bloqueios)</p>
+                                <ul class="space-y-1.5 text-xs text-slate-300">
+                                    <li class="flex justify-between items-center"><span class="truncate">Instagram</span><span class="text-red-400 ml-1 font-bold">x2</span></li>
+                                    <li class="flex justify-between items-center"><span class="truncate">4chan.org</span><span class="text-red-400 ml-1 font-bold">x1</span></li>
+                                </ul>
+                            </div>
+                            <div class="w-full bg-red-500 rounded-t-sm group-hover:bg-red-400 transition-colors" style="height: 37.5%"></div>
+                            <span class="text-xs text-slate-500 mt-2 absolute -bottom-6">Ter</span>
+                        </div>
+
+                        <div class="group relative flex flex-col items-center justify-end h-full w-8 sm:w-14 cursor-pointer">
+                            <div class="opacity-0 group-hover:opacity-100 absolute bottom-full mb-1 w-52 bg-slate-900 border border-slate-600 rounded-lg p-3 text-left transition-all z-30 shadow-2xl pointer-events-auto max-h-36 overflow-y-auto custom-scrollbar">
+                                <p class="font-bold text-white text-xs border-b border-slate-700 pb-1 mb-2 text-center">Quarta (8 Bloqueios)</p>
+                                <ul class="space-y-1.5 text-xs text-slate-300 pr-1">
+                                    <li class="flex justify-between items-center"><span class="truncate">TikTok</span><span class="text-red-400 ml-1 font-bold">x2</span></li>
+                                    <li class="flex justify-between items-center"><span class="truncate">Roblox</span><span class="text-red-400 ml-1 font-bold">x1</span></li>
+                                    <li class="flex justify-between items-center"><span class="truncate">bet365.com</span><span class="text-red-400 ml-1 font-bold">x2</span></li>
+                                    <li class="flex justify-between items-center"><span class="truncate">omegle.com</span><span class="text-red-400 ml-1 font-bold">x1</span></li>
+                                    <li class="flex justify-between items-center"><span class="truncate">xvideos.com</span><span class="text-red-400 ml-1 font-bold">x1</span></li>
+                                </ul>
+                            </div>
+                            <div class="w-full bg-red-500 rounded-t-sm group-hover:bg-red-400 transition-colors" style="height: 100%"></div>
+                            <span class="text-xs text-slate-500 mt-2 absolute -bottom-6">Qua</span>
+                        </div>
+
+                        <div class="group relative flex flex-col items-center justify-end h-full w-8 sm:w-14 cursor-pointer">
+                            <div class="opacity-0 group-hover:opacity-100 absolute bottom-full mb-1 w-48 bg-slate-900 border border-slate-600 rounded-lg p-3 text-left transition-all z-30 shadow-2xl pointer-events-auto max-h-36 overflow-y-auto custom-scrollbar">
+                                <p class="font-bold text-white text-xs border-b border-slate-700 pb-1 mb-2 text-center">Quinta (2 Bloqueios)</p>
+                                <ul class="space-y-1.5 text-xs text-slate-300">
+                                    <li class="flex justify-between items-center"><span class="truncate">pornhub.com</span><span class="text-red-400 ml-1 font-bold">x2</span></li>
+                                </ul>
+                            </div>
+                            <div class="w-full bg-red-500 rounded-t-sm group-hover:bg-red-400 transition-colors" style="height: 25%"></div>
+                            <span class="text-xs text-slate-500 mt-2 absolute -bottom-6">Qui</span>
+                        </div>
+
+                        <div class="group relative flex flex-col items-center justify-end h-full w-8 sm:w-14 cursor-pointer">
+                            <div class="opacity-0 group-hover:opacity-100 absolute bottom-full mb-1 w-48 bg-slate-900 border border-slate-600 rounded-lg p-3 text-left transition-all z-30 shadow-2xl pointer-events-auto max-h-36 overflow-y-auto custom-scrollbar">
+                                <p class="font-bold text-white text-xs border-b border-slate-700 pb-1 mb-2 text-center">Sexta (6 Bloqueios)</p>
+                                <ul class="space-y-1.5 text-xs text-slate-300">
+                                    <li class="flex justify-between items-center"><span class="truncate">Free Fire</span><span class="text-red-400 ml-1 font-bold">x4</span></li>
+                                    <li class="flex justify-between items-center"><span class="truncate">Instagram</span><span class="text-red-400 ml-1 font-bold">x2</span></li>
+                                </ul>
+                            </div>
+                            <div class="w-full bg-red-500 rounded-t-sm group-hover:bg-red-400 transition-colors" style="height: 75%"></div>
+                            <span class="text-xs text-slate-500 mt-2 absolute -bottom-6">Sex</span>
+                        </div>
+
+                        <div class="group relative flex flex-col items-center justify-end h-full w-8 sm:w-14 cursor-pointer">
+                            <div class="opacity-0 group-hover:opacity-100 absolute bottom-full mb-1 w-48 bg-slate-900 border border-slate-600 rounded-lg p-3 text-left transition-all z-30 shadow-2xl pointer-events-auto max-h-36 overflow-y-auto custom-scrollbar">
+                                <p class="font-bold text-white text-xs border-b border-slate-700 pb-1 mb-2 text-center">Sábado (4 Bloqueios)</p>
+                                <ul class="space-y-1.5 text-xs text-slate-300">
+                                    <li class="flex justify-between items-center"><span class="truncate">omegle.com</span><span class="text-red-400 ml-1 font-bold">x3</span></li>
+                                    <li class="flex justify-between items-center"><span class="truncate">Discord</span><span class="text-red-400 ml-1 font-bold">x1</span></li>
+                                </ul>
+                            </div>
+                            <div class="w-full bg-red-500 rounded-t-sm group-hover:bg-red-400 transition-colors" style="height: 50%"></div>
+                            <span class="text-xs text-slate-500 mt-2 absolute -bottom-6">Sáb</span>
+                        </div>
+
+                        <div class="group relative flex flex-col items-center justify-end h-full w-8 sm:w-14 cursor-pointer">
+                            <div class="opacity-0 group-hover:opacity-100 absolute bottom-full mb-1 w-48 bg-slate-900 border border-slate-600 rounded-lg p-3 text-left transition-all z-30 shadow-2xl pointer-events-auto max-h-36 overflow-y-auto custom-scrollbar">
+                                <p class="font-bold text-white text-xs border-b border-slate-700 pb-1 mb-2 text-center">Domingo (1 Bloqueio)</p>
+                                <ul class="space-y-1.5 text-xs text-slate-300">
+                                    <li class="flex justify-between items-center"><span class="truncate">4chan.org</span><span class="text-red-400 ml-1 font-bold">x1</span></li>
+                                </ul>
+                            </div>
+                            <div class="w-full bg-red-500 rounded-t-sm group-hover:bg-red-400 transition-colors" style="height: 12.5%"></div>
+                            <span class="text-xs text-slate-500 mt-2 absolute -bottom-6">Dom</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // LÓGICA UNIVERSAL PARA PUXAR NOME E FOTO DA CRIANÇA
+        document.addEventListener('DOMContentLoaded', () => {
+            const dadosSalvos = localStorage.getItem('guardian_dados_criancas');
+            
+            if (dadosSalvos) {
+                try {
+                    const perfis = JSON.parse(dadosSalvos);
+                    
+                    if (perfis.length > 0) {
+                        const perfilAtivo = perfis[0]; // Pega a primeira criança cadastrada
+                        const nomeDaCrianca = perfilAtivo.nome;
+                        const primeiraLetra = nomeDaCrianca.charAt(0).toUpperCase();
+                        const fotoBase64 = perfilAtivo.foto; // Pega a foto se existir
+                        
+                        // Atualiza o nome na barra lateral
+                        const elNomeSidebar = document.getElementById('nomeSidebar');
+                        if (elNomeSidebar) elNomeSidebar.innerText = nomeDaCrianca;
+                        
+                        // Atualiza a bolinha (Foto ou Letra)
+                        const elLetraSidebar = document.getElementById('letraSidebar');
+                        if (elLetraSidebar) {
+                            if (fotoBase64) {
+                                // Se tiver foto, tira a cor de fundo e coloca a tag de imagem HTML
+                                elLetraSidebar.classList.remove('bg-gradient-to-br', 'from-emerald-400', 'to-cyan-500');
+                                elLetraSidebar.innerHTML = `<img src="${fotoBase64}" class="w-full h-full object-cover rounded-full shadow-sm">`;
+                            } else {
+                                // Se não tiver foto, mantém a cor de fundo e coloca a Letra Inicial
+                                elLetraSidebar.innerHTML = primeiraLetra;
+                            }
+                        }
+                    }
+                } catch(e) {
+                    console.error("Erro ao carregar dados do perfil:", e);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
