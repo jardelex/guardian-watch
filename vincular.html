@@ -8,54 +8,127 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body { background-color: #0F172A; color: white; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; }
-        @keyframes scan { 0% { top: 0; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+        
+        /* Efeito de escaneamento sobre o QR Code Falso */
+        @keyframes scan {
+            0% { top: 0; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
         .scanner-line { animation: scan 2s linear infinite; }
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen p-4 relative overflow-hidden">
+    
     <div class="absolute top-[-20%] right-[-10%] w-[50%] h-[50%] bg-indigo-600/20 rounded-full blur-[120px] pointer-events-none"></div>
     <div class="absolute bottom-[-20%] left-[-10%] w-[50%] h-[50%] bg-emerald-600/10 rounded-full blur-[120px] pointer-events-none"></div>
 
     <div class="w-full max-w-4xl bg-[#1E293B]/90 backdrop-blur-xl rounded-2xl border border-slate-700/50 p-8 shadow-2xl relative z-10">
+        
         <div class="text-center mb-10">
             <h1 class="text-3xl font-bold text-white mb-2">Vincular Dispositivo</h1>
-            <p class="text-slate-400">Escaneie o QR Code no aparelho da criança para ativar a proteção.</p>
+            <p class="text-slate-400">Siga os passos abaixo no aparelho da criança para ativar o agente GuardianWatch.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 relative">
             <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-slate-700/50 -translate-x-1/2"></div>
-            
+
             <div class="space-y-6">
-                <h2 class="text-xl font-bold text-white flex items-center gap-2"><i data-lucide="download" class="w-5 h-5 text-indigo-400"></i> Passo 1</h2>
-                <p class="text-sm text-slate-300 font-mono bg-slate-800 p-3 rounded border border-slate-700">app.guardianwatch.com</p>
-                <button class="w-full bg-slate-800 border border-slate-600 py-3 rounded-lg text-sm font-bold flex items-center justify-center gap-2"><i data-lucide="play-square" class="w-5 h-5 text-emerald-400"></i> Google Play</button>
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-white shadow-lg shadow-indigo-500/30">1</div>
+                    <h2 class="text-xl font-bold text-white">Baixe o Agente</h2>
+                </div>
+                
+                <p class="text-sm text-slate-300">Pegue o dispositivo da criança, abra o navegador e acesse o link abaixo ou use as lojas de aplicativos:</p>
+                
+                <div class="bg-slate-800/80 border border-slate-600 rounded-lg p-3 flex items-center justify-between">
+                    <span class="text-indigo-400 font-mono text-sm tracking-wider">app.guardianwatch.com</span>
+                    <button class="text-slate-400 hover:text-white" title="Copiar Link"><i data-lucide="copy" class="w-4 h-4"></i></button>
+                </div>
+
+                <div class="flex flex-col gap-3">
+                    <button class="flex items-center justify-center gap-3 w-full bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white py-3 rounded-lg transition-colors">
+                        <i data-lucide="play-square" class="w-5 h-5 text-emerald-400"></i>
+                        <span class="text-sm font-medium">Google Play (Android)</span>
+                    </button>
+                    <button class="flex items-center justify-center gap-3 w-full bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white py-3 rounded-lg transition-colors">
+                        <i data-lucide="apple" class="w-5 h-5 text-white"></i>
+                        <span class="text-sm font-medium">App Store (iOS)</span>
+                    </button>
+                </div>
             </div>
 
-            <div class="space-y-6 flex flex-col items-center">
-                <h2 class="text-xl font-bold text-white w-full"><i data-lucide="qr-code" class="w-5 h-5 text-indigo-400 inline"></i> Passo 2</h2>
-                <div class="relative w-32 h-32 bg-white rounded-lg p-2 border-4 border-slate-600 overflow-hidden">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=GuardianWatch" class="w-full h-full">
-                    <div class="scanner-line absolute left-0 right-0 h-0.5 bg-emerald-500 shadow-[0_0_8px_#10b981]"></div>
+            <div class="space-y-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-white shadow-lg shadow-indigo-500/30">2</div>
+                    <h2 class="text-xl font-bold text-white">Parear Conta</h2>
                 </div>
-                <div class="bg-slate-900 px-4 py-2 rounded border border-slate-700 font-mono text-xl tracking-widest text-white">938-472</div>
+
+                <p class="text-sm text-slate-300">Abra o aplicativo GuardianWatch no dispositivo da criança e escaneie o QR Code ou digite o PIN.</p>
+
+                <div class="flex flex-col sm:flex-row gap-6 items-center bg-slate-800/40 p-4 rounded-xl border border-slate-700/50">
+                    
+                    <div class="relative w-32 h-32 bg-white rounded-lg p-2 border-4 border-slate-600 overflow-hidden shrink-0">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=GuardianWatchDemo" alt="QR Code" class="w-full h-full object-contain">
+                        <div class="scanner-line absolute left-0 right-0 h-0.5 bg-emerald-500 shadow-[0_0_8px_#10b981] z-10"></div>
+                    </div>
+
+                    <div class="flex flex-col items-center sm:items-start w-full">
+                        <span class="text-xs text-slate-400 uppercase tracking-widest mb-1">Ou use o PIN:</span>
+                        <div class="bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 w-full text-center sm:text-left mb-2">
+                            <span class="text-2xl font-mono font-bold tracking-[0.25em] text-white">938-472</span>
+                        </div>
+                        <span class="text-[10px] text-emerald-400 flex items-center gap-1">
+                            <i data-lucide="shield-check" class="w-3 h-3"></i> Código expira em 10:00
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="mt-10 pt-6 border-t border-slate-700/50 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div id="status" class="flex items-center gap-3">
+            
+            <div id="statusConexao" class="flex items-center gap-3">
                 <i data-lucide="loader-2" class="w-6 h-6 text-indigo-400 animate-spin"></i>
-                <p class="text-sm font-bold text-white">Aguardando vínculo...</p>
+                <div>
+                    <p class="text-sm font-bold text-white">Aguardando dispositivo...</p>
+                    <p class="text-xs text-slate-400">Mantenha esta tela aberta</p>
+                </div>
             </div>
-            <button onclick="finalizar()" class="px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-lg shadow-lg shadow-emerald-500/20 transition-all">Concluir e Abrir Painel</button>
+
+            <button onclick="simularSucesso()" class="px-6 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-bold rounded-lg transition-colors shadow-lg shadow-emerald-500/20 flex items-center gap-2">
+                Simular Conexão <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
         </div>
     </div>
 
     <script>
         lucide.createIcons();
-        function finalizar() {
-            // Grava o status de conclusão para o roteamento do index.html funcionar
+
+        // Função para simular o sucesso do pareamento e ir para o Painel
+        function simularSucesso() {
+            const statusDiv = document.getElementById('statusConexao');
+            
+            // Muda o visual para "Conectado!"
+            statusDiv.innerHTML = `
+                <i data-lucide="check-circle-2" class="w-8 h-8 text-emerald-400"></i>
+                <div>
+                    <p class="text-base font-bold text-emerald-400">Dispositivo Vinculado!</p>
+                    <p class="text-xs text-slate-300">Redirecionando para o painel...</p>
+                </div>
+            `;
+            lucide.createIcons();
+
+            document.querySelector('.max-w-4xl').classList.add('border-emerald-500/50', 'shadow-emerald-500/10');
+
+            // GRAVA O "CARIMBO" NA MEMÓRIA DO NAVEGADOR
             localStorage.setItem('guardian_perfil_criado', 'sim');
-            window.location.href = 'painel.html';
+
+            // Redireciona para o Painel após 2 segundos
+            setTimeout(() => {
+                window.location.href = 'painel.html';
+            }, 2000);
         }
     </script>
 </body>

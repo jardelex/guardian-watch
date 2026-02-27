@@ -8,69 +8,219 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body { background-color: #0F172A; color: white; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; }
+        input[type="radio"] { display: none; }
         input[type="radio"]:checked + div { border-color: #6366F1; background-color: rgba(99, 102, 241, 0.1); }
+        input[type="radio"]:checked + div .icon-check { opacity: 1; transform: scale(1); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in-up { animation: fadeIn 0.4s ease-out forwards; }
+        .custom-scrollbar::-webkit-scrollbar { height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen p-4">
-    <div class="w-full max-w-2xl bg-[#1E293B]/90 backdrop-blur-xl rounded-2xl border border-slate-700/50 p-8 shadow-2xl">
-        <div class="text-center mb-8 pb-6 border-b border-slate-700/50">
+<body class="flex items-center justify-center min-h-screen p-4 relative overflow-hidden">
+    
+    <div class="absolute top-[-20%] right-[-10%] w-[50%] h-[50%] bg-indigo-600/20 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-[-20%] left-[-10%] w-[50%] h-[50%] bg-emerald-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="w-full max-w-2xl bg-[#1E293B]/90 backdrop-blur-xl rounded-2xl border border-slate-700/50 p-8 md:p-10 shadow-2xl relative z-10">
+        
+        <div class="text-center mb-6 border-b border-slate-700/50 pb-6">
             <h1 class="text-3xl font-bold text-white mb-2">Quem vamos proteger hoje?</h1>
-            <p class="text-slate-400">Configure o perfil da criança para o monitoramento.</p>
+            <p class="text-slate-400">Adicione os perfis das crianças para configurarmos a proteção.</p>
+        </div>
+
+        <div id="areaPerfisSalvos" class="hidden mb-8">
+            <h3 class="text-sm font-semibold text-slate-300 mb-3">Perfis já adicionados:</h3>
+            <div id="listaPerfisCriados" class="flex gap-3 overflow-x-auto pb-2 custom-scrollbar"></div>
         </div>
 
         <form id="formPerfil" class="space-y-6">
+            
             <div class="flex flex-col sm:flex-row gap-6">
-                <div class="flex flex-col items-center">
-                    <label class="relative cursor-pointer group">
-                        <div id="previewFoto" class="w-24 h-24 rounded-full border-2 border-dashed border-slate-500 bg-slate-800/50 flex items-center justify-center overflow-hidden">
-                            <i id="iconeFoto" data-lucide="camera" class="w-8 h-8 text-slate-500"></i>
+                <div class="flex flex-col items-center justify-center">
+                    <label class="block text-sm font-medium text-slate-300 mb-2">Foto (Opcional)</label>
+                    <label class="relative cursor-pointer group flex flex-col items-center">
+                        <div id="previewFoto" class="w-24 h-24 rounded-full border-2 border-dashed border-slate-500 bg-slate-800/50 flex items-center justify-center overflow-hidden group-hover:border-indigo-400 transition-colors">
+                            <i id="iconeFoto" data-lucide="camera" class="w-8 h-8 text-slate-500 group-hover:text-indigo-400 transition-colors"></i>
                             <img id="imgFoto" src="" class="hidden w-full h-full object-cover">
                         </div>
                         <input type="file" id="inputFoto" accept="image/*" class="hidden" onchange="previewImagem(event)">
+                        <div class="absolute bottom-0 right-0 bg-indigo-500 rounded-full p-1.5 shadow-lg border-2 border-[#1E293B]">
+                            <i data-lucide="plus" class="w-3 h-3 text-white"></i>
+                        </div>
                     </label>
-                    <span class="text-xs text-slate-500 mt-2">Foto (Opcional)</span>
                 </div>
 
                 <div class="flex-1 space-y-4">
-                    <input id="nomeCrianca" type="text" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-3 text-white focus:border-indigo-500" placeholder="Nome da Criança">
-                    <input id="idadeCrianca" type="number" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-3 text-white focus:border-indigo-500" placeholder="Idade">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Nome da Criança</label>
+                        <div class="relative">
+                            <i data-lucide="user" class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500"></i>
+                            <input id="nomeCrianca" type="text" class="w-full bg-slate-800/80 border border-slate-600 rounded-lg pl-10 pr-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all" placeholder="Ex: Miguel">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Idade</label>
+                        <div class="relative">
+                            <i data-lucide="calendar" class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-500"></i>
+                            <input id="idadeCrianca" type="number" min="3" max="17" class="w-full bg-slate-800/80 border border-slate-600 rounded-lg pl-10 pr-4 py-3 text-white text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all" placeholder="Ex: 10">
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <button type="button" onclick="concluirConfiguracao()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3.5 rounded-lg shadow-lg shadow-indigo-500/20 flex items-center justify-center gap-2">
-                Avançar e Vincular <i data-lucide="arrow-right" class="w-5 h-5"></i>
-            </button>
+            <div>
+                <label class="block text-sm font-medium text-slate-300 mb-3">Qual dispositivo será monitorado?</label>
+                <div class="grid grid-cols-3 gap-3 md:gap-4">
+                    <label class="cursor-pointer group">
+                        <input type="radio" name="dispositivo" value="smartphone" checked>
+                        <div class="relative flex flex-col items-center justify-center p-4 rounded-xl border-2 border-slate-700 bg-slate-800/50 hover:bg-slate-700/50 transition-all">
+                            <i data-lucide="smartphone" class="h-8 w-8 text-indigo-400 mb-2"></i>
+                            <span class="text-sm font-medium text-white">Celular</span>
+                            <div class="icon-check absolute top-2 right-2 bg-indigo-500 rounded-full p-0.5 opacity-0 scale-50 transition-all"><i data-lucide="check" class="w-3 h-3 text-white"></i></div>
+                        </div>
+                    </label>
+                    <label class="cursor-pointer group">
+                        <input type="radio" name="dispositivo" value="tablet">
+                        <div class="relative flex flex-col items-center justify-center p-4 rounded-xl border-2 border-slate-700 bg-slate-800/50 hover:bg-slate-700/50 transition-all">
+                            <i data-lucide="tablet" class="h-8 w-8 text-purple-400 mb-2"></i>
+                            <span class="text-sm font-medium text-white">Tablet</span>
+                            <div class="icon-check absolute top-2 right-2 bg-indigo-500 rounded-full p-0.5 opacity-0 scale-50 transition-all"><i data-lucide="check" class="w-3 h-3 text-white"></i></div>
+                        </div>
+                    </label>
+                    <label class="cursor-pointer group">
+                        <input type="radio" name="dispositivo" value="pc">
+                        <div class="relative flex flex-col items-center justify-center p-4 rounded-xl border-2 border-slate-700 bg-slate-800/50 hover:bg-slate-700/50 transition-all">
+                            <i data-lucide="monitor" class="h-8 w-8 text-emerald-400 mb-2"></i>
+                            <span class="text-sm font-medium text-white">PC / Note</span>
+                            <div class="icon-check absolute top-2 right-2 bg-indigo-500 rounded-full p-0.5 opacity-0 scale-50 transition-all"><i data-lucide="check" class="w-3 h-3 text-white"></i></div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 pt-4 mt-8">
+                <button type="button" onclick="adicionarPerfil()" class="w-full sm:w-1/2 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-bold py-3.5 rounded-lg transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="user-plus" class="w-5 h-5"></i> Adicionar Outro
+                </button>
+
+                <button type="button" id="btnFinalizar" onclick="concluirConfiguracao()" class="w-full sm:w-1/2 bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3.5 rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/20">
+                    <span id="btnText">Avançar e Vincular</span>
+                    <i id="btnIcon" data-lucide="arrow-right" class="w-5 h-5"></i>
+                </button>
+            </div>
         </form>
     </div>
 
     <script>
-        lucide.createIcons();
+        // Função segura para carregar ícones sem travar a página
+        function carregarIcones() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            } else {
+                console.warn("Aviso: Ícones não carregaram devido a bloqueio de rede ou AdBlock.");
+            }
+        }
+
+        carregarIcones(); // Chama a função segura na inicialização
+
+        let perfisCriados = [];
         let fotoAtualEmBase64 = null;
 
         function previewImagem(event) {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = (e) => {
-                    document.getElementById('imgFoto').src = e.target.result;
-                    document.getElementById('imgFoto').classList.remove('hidden');
-                    document.getElementById('iconeFoto').classList.add('hidden');
+                reader.onload = function(e) {
+                    const img = document.getElementById('imgFoto');
+                    const icone = document.getElementById('iconeFoto');
+                    img.src = e.target.result;
+                    img.classList.remove('hidden');
+                    icone.classList.add('hidden');
                     fotoAtualEmBase64 = e.target.result;
                 }
                 reader.readAsDataURL(file);
             }
         }
 
-        function concluirConfiguracao() {
-            const nome = document.getElementById('nomeCrianca').value.trim();
-            const idade = document.getElementById('idadeCrianca').value.trim();
-            if (!nome || !idade) return alert("Preencha os campos!");
+        function adicionarPerfil() {
+            const nomeInput = document.getElementById('nomeCrianca');
+            const idadeInput = document.getElementById('idadeCrianca');
+            const dispositivo = document.querySelector('input[name="dispositivo"]:checked').value;
+            const nome = nomeInput.value.trim();
+            const idade = idadeInput.value.trim();
 
-            // Salva os dados dinâmicos do perfil na memória
-            const perfil = [{ nome, idade, foto: fotoAtualEmBase64 }];
-            localStorage.setItem('guardian_dados_criancas', JSON.stringify(perfil));
-            window.location.href = 'vincular.html';
+            if (nome === '' || idade === '') {
+                alert("Preencha o Nome e a Idade.");
+                return;
+            }
+
+            perfisCriados.push({ nome, idade, dispositivo, foto: fotoAtualEmBase64 });
+            renderizarPerfis();
+
+            nomeInput.value = '';
+            idadeInput.value = '';
+            fotoAtualEmBase64 = null;
+            document.getElementById('imgFoto').classList.add('hidden');
+            document.getElementById('iconeFoto').classList.remove('hidden');
+            document.getElementById('inputFoto').value = '';
+            nomeInput.focus();
+        }
+
+        function renderizarPerfis() {
+            const areaPerfis = document.getElementById('areaPerfisSalvos');
+            const listaDiv = document.getElementById('listaPerfisCriados');
+            
+            if (perfisCriados.length > 0) areaPerfis.classList.remove('hidden');
+            listaDiv.innerHTML = '';
+            
+            perfisCriados.forEach((perfil) => {
+                let iconeDispositivo = 'smartphone'; let cor = 'text-indigo-400';
+                if (perfil.dispositivo === 'tablet') { iconeDispositivo = 'tablet'; cor = 'text-purple-400'; }
+                if (perfil.dispositivo === 'pc') { iconeDispositivo = 'monitor'; cor = 'text-emerald-400'; }
+
+                let avatarHTML = perfil.foto 
+                    ? `<img src="${perfil.foto}" class="w-full h-full object-cover">`
+                    : `<i data-lucide="user" class="w-5 h-5 text-slate-300"></i>`;
+
+                const cardHTML = `
+                    <div class="flex items-center gap-3 bg-slate-800/80 border border-slate-600 rounded-lg p-3 shrink-0 w-48 animate-fade-in-up">
+                        <div class="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center flex-shrink-0 overflow-hidden border border-slate-500">
+                            ${avatarHTML}
+                        </div>
+                        <div class="overflow-hidden">
+                            <p class="text-sm font-bold text-white truncate">${perfil.nome}</p>
+                            <p class="text-xs text-slate-400 flex items-center gap-1 mt-0.5">
+                                <i data-lucide="${iconeDispositivo}" class="w-3 h-3 ${cor}"></i> ${perfil.idade} anos
+                            </p>
+                        </div>
+                    </div>
+                `;
+                listaDiv.insertAdjacentHTML('beforeend', cardHTML);
+            });
+            carregarIcones(); // Usa a função segura novamente
+        }
+
+        function concluirConfiguracao() {
+            if (document.getElementById('nomeCrianca').value.trim() !== '') { adicionarPerfil(); }
+            if (perfisCriados.length === 0) { alert("Adicione pelo menos um perfil."); return; }
+
+            // SALVA OS DADOS PARA O PAINEL LER DEPOIS
+            localStorage.setItem('guardian_dados_criancas', JSON.stringify(perfisCriados));
+
+            const btn = document.getElementById('btnFinalizar');
+            btn.classList.add('opacity-90', 'cursor-wait');
+            document.getElementById('btnText').innerText = 'Preparando vínculo...';
+            
+            // Só tenta animar o ícone se o script externo carregou com sucesso
+            if (typeof lucide !== 'undefined') {
+                document.getElementById('btnIcon').setAttribute('data-lucide', 'loader-2');
+                document.getElementById('btnIcon').classList.add('animate-spin');
+                lucide.createIcons(); 
+            }
+            
+            // REDIRECIONA PARA A TELA DE VINCULAÇÃO COM SUCESSO
+            setTimeout(() => { window.location.href = 'vincular.html'; }, 1500);
         }
     </script>
-</body>
-</html>

@@ -8,79 +8,268 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body { background-color: #0F172A; color: white; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slide-in { animation: slideIn 0.4s ease-out forwards; }
     </style>
 </head>
 <body>
     <div class="flex min-h-screen bg-[#0F172A]">
+        <button class="inline-flex items-center justify-center h-10 w-10 fixed top-4 left-4 z-50 md:hidden text-white hover:bg-slate-700 rounded-md">
+            <i data-lucide="menu" class="h-5 w-5"></i>
+        </button>
+
         <aside class="fixed top-0 left-0 h-full z-40 bg-[#0F172A] border-r border-slate-700/50 flex flex-col w-[260px] hidden md:flex">
             <div class="flex items-center gap-3 px-4 h-16 border-b border-slate-700/50">
-                <div class="w-9 h-9 rounded-lg bg-indigo-500 flex items-center justify-center"><i data-lucide="shield" class="h-5 w-5 text-white"></i></div>
+                <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                    <i data-lucide="shield" class="h-5 w-5 text-white"></i>
+                </div>
                 <span class="text-lg font-bold text-white">GuardianWatch</span>
             </div>
             
-            <nav class="flex-1 py-4 px-3 space-y-1">
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-indigo-500/20 text-indigo-400" href="painel.html"><i data-lucide="layout-dashboard" class="h-5 w-5"></i><span>Painel</span></a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white" href="tempo.html"><i data-lucide="clock" class="h-5 w-5"></i><span>Tempo de Tela</span></a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white" href="apps.html"><i data-lucide="app-window" class="h-5 w-5"></i><span>Aplicativos</span></a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white" href="localizacao.html"><i data-lucide="map-pin" class="h-5 w-5"></i><span>Localização</span></a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white" href="filtro.html"><i data-lucide="shield" class="h-5 w-5"></i><span>Filtro Web</span></a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white" href="relatorios.html"><i data-lucide="bar-chart-2" class="h-5 w-5"></i><span>Relatórios</span></a>
+            <nav class="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-indigo-500/20 text-indigo-400" href="painel.html">
+                    <i data-lucide="layout-dashboard" class="h-5 w-5"></i><span>Painel</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="tempo.html">
+                    <i data-lucide="clock" class="h-5 w-5"></i><span>Tempo de Tela</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="apps.html">
+                    <i data-lucide="app-window" class="h-5 w-5"></i><span>Aplicativos</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="localizacao.html">
+                    <i data-lucide="map-pin" class="h-5 w-5"></i><span>Localização</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="filtro.html">
+                    <i data-lucide="shield" class="h-5 w-5"></i><span>Filtro Web</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="relatorios.html">
+                    <i data-lucide="bar-chart-2" class="h-5 w-5"></i><span>Relatórios</span>
+                </a>
+
                 <div class="my-2 border-t border-slate-700/50"></div>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white" href="configuracoes.html"><i data-lucide="settings" class="h-5 w-5"></i><span>Configurações</span></a>
+
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="configuracoes.html">
+                    <i data-lucide="settings" class="h-5 w-5"></i><span>Configurações</span>
+                </a>
             </nav>
 
             <div class="p-4 border-t border-slate-700/50 flex items-center gap-3">
-                <div id="letraSidebar" class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold overflow-hidden border border-slate-600">?</div>
+                <div id="letraSidebar" class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-white text-sm font-bold">M</div>
                 <div>
-                    <p id="nomeSidebar" class="text-sm font-bold text-white truncate w-32">Carregando...</p>
-                    <p class="text-[10px] text-emerald-400 flex items-center gap-1"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span> Online agora</p>
+                    <p id="nomeSidebar" class="text-sm font-medium text-white">Miguel</p>
+                    <p class="text-xs text-emerald-400">Online agora</p>
                 </div>
             </div>
         </aside>
 
-        <main class="flex-1 md:ml-[260px] p-8">
-            <div class="mb-8">
-                <h1 class="text-3xl font-bold text-white mb-2">Painel de Controle</h1>
-                <p class="text-slate-400 italic">Monitorando dispositivo de <span id="nomeHeader" class="text-indigo-400 font-bold">...</span></p>
+        <main class="flex-1 md:ml-[260px] p-4 md:p-6 lg:p-8 overflow-auto">
+            <div class="mb-8 mt-12 md:mt-0">
+                <h1 class="text-2xl md:text-3xl font-bold text-white mb-2">Painel de Controle</h1>
+                <p class="text-slate-400">Monitoramento em tempo real do dispositivo de <span id="nomeHeader" class="text-indigo-400 font-medium">Miguel</span></p>
             </div>
 
-            <div class="bg-gradient-to-r from-slate-800 to-slate-900 rounded-xl p-8 border border-slate-700/50 flex justify-between items-center shadow-xl">
+            <div class="bg-gradient-to-r from-slate-800 to-slate-900 rounded-xl p-6 sm:p-8 mb-8 border border-slate-700/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-xl">
                 <div>
-                    <h2 class="text-2xl font-bold text-white mb-2 flex items-center gap-2">Proteção Ativa <i data-lucide="check-circle-2" class="text-emerald-500 w-6 h-6"></i></h2>
-                    <p class="text-slate-300">Todos os filtros estão operando corretamente.</p>
+                    <h2 class="text-xl sm:text-2xl font-bold text-white mb-2 flex items-center gap-2">Proteção Ativa <i data-lucide="check-circle-2" class="text-emerald-500 w-6 h-6"></i></h2>
+                    <p class="text-slate-300 text-sm sm:text-base">O agente GuardianWatch está operando e sincronizado.</p>
                 </div>
-                <button class="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-lg font-bold flex items-center gap-2 transition-all shadow-lg shadow-indigo-500/20">
-                    <i data-lucide="monitor-smartphone" class="w-5 h-5"></i> Espelhar Tela
+                <button onclick="abrirModalRemoto()" class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-2.5 rounded-lg font-bold transition-all shadow-[0_0_15px_rgba(79,70,229,0.4)]">
+                    <i data-lucide="monitor-smartphone" class="w-5 h-5"></i>
+                    Espelhar Tela
                 </button>
             </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5 hover:-translate-y-1 hover:shadow-lg hover:shadow-indigo-500/10 transition-all duration-300 cursor-pointer">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400"><i data-lucide="clock" class="h-5 w-5"></i></div>
+                        <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded-full">-15%</span>
+                    </div>
+                    <h3 class="text-sm font-medium text-slate-400">Tempo de Tela Hoje</h3>
+                    <p class="text-2xl font-bold text-white mt-1">2h 45min</p>
+                </div>
+                
+                <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5 hover:-translate-y-1 hover:shadow-lg hover:shadow-red-500/10 transition-all duration-300 cursor-pointer">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center text-red-400"><i data-lucide="app-window" class="h-5 w-5"></i></div>
+                    </div>
+                    <h3 class="text-sm font-medium text-slate-400">Apps Bloqueados</h3>
+                    <p class="text-2xl font-bold text-white mt-1">8</p>
+                </div>
+
+                <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-500/10 transition-all duration-300 cursor-pointer">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400"><i data-lucide="map-pin" class="h-5 w-5"></i></div>
+                    </div>
+                    <h3 class="text-sm font-medium text-slate-400">Localização</h3>
+                    <p class="text-2xl font-bold text-white mt-1">Em casa</p>
+                </div>
+
+                <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-5 hover:-translate-y-1 hover:shadow-lg hover:shadow-amber-500/10 transition-all duration-300 cursor-pointer">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400"><i data-lucide="shield" class="h-5 w-5"></i></div>
+                        <span class="text-xs bg-red-500/20 text-red-400 px-2 py-1 rounded-full">+2</span>
+                    </div>
+                    <h3 class="text-sm font-medium text-slate-400">Sites Bloqueados</h3>
+                    <p class="text-2xl font-bold text-white mt-1">23</p>
+                </div>
+            </div>
+
+            <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 p-6 shadow-lg">
+                <div class="flex justify-between items-center mb-5">
+                    <h3 class="text-lg font-semibold text-white flex items-center gap-2">
+                        <i data-lucide="activity" class="text-indigo-400 w-5 h-5"></i> Atividade Recente
+                    </h3>
+                    <span class="flex items-center gap-1 text-xs text-slate-400"><div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div> Ao vivo</span>
+                </div>
+                
+                <div id="listaAtividades" class="space-y-3">
+                    <div class="flex items-center justify-between p-3 rounded-lg bg-slate-800/50 border border-slate-700/30">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="check-circle-2" class="text-emerald-400 h-5 w-5"></i>
+                            <div><p class="text-sm text-white font-medium">Abriu YouTube</p><p class="text-xs text-slate-400">Há 5 minutos</p></div>
+                        </div>
+                        <span class="text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded-full">Permitido</span>
+                    </div>
+                    <div class="flex items-center justify-between p-3 rounded-lg bg-slate-800/50 border border-red-500/20">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="shield-alert" class="text-red-400 h-5 w-5"></i>
+                            <div><p class="text-sm text-red-400 font-medium">Tentativa de acesso a site de apostas</p><p class="text-xs text-slate-400">Há 22 minutos</p></div>
+                        </div>
+                        <span class="text-xs text-red-400 bg-red-500/10 border border-red-500/20 px-2 py-1 rounded-full">Bloqueado</span>
+                    </div>
+                </div>
+            </div>
         </main>
+    </div>
+
+    <div id="modalRemoto" class="fixed inset-0 bg-black/80 backdrop-blur-md z-[100] hidden items-center justify-center">
+        <div class="bg-[#1E293B] border border-slate-600 rounded-xl p-8 w-[90%] max-w-md shadow-2xl flex flex-col items-center relative overflow-hidden">
+            <button onclick="fecharModalRemoto()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
+            
+            <div id="loadingRemoto" class="flex flex-col items-center w-full">
+                <i data-lucide="radio-tower" class="w-16 h-16 text-indigo-500 animate-pulse mb-4"></i>
+                <h3 class="text-xl font-bold text-white mb-2">Iniciando Espelhamento...</h3>
+                <p class="text-sm text-slate-400 text-center mb-6">Estabelecendo conexão segura via agente GuardianWatch.</p>
+                
+                <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden mb-4">
+                    <div id="barraConexao" class="h-full bg-indigo-500 transition-all duration-[3000ms] ease-out" style="width: 0%;"></div>
+                </div>
+                
+                <p class="text-xs text-amber-400 flex items-center gap-1 font-medium bg-amber-500/10 p-2 rounded border border-amber-500/20">
+                    <i data-lucide="info" class="w-4 h-4"></i> O dispositivo receberá uma notificação de tela compartilhada.
+                </p>
+            </div>
+
+            <div id="sucessoRemoto" class="hidden flex-col items-center w-full">
+                <i data-lucide="smartphone" class="w-16 h-16 text-emerald-400 mb-4"></i>
+                <h3 class="text-xl font-bold text-white mb-2">Conectado com Sucesso!</h3>
+                <p class="text-sm text-slate-400 text-center mb-6">O dispositivo está transmitindo a tela.</p>
+                <button onclick="fecharModalRemoto()" class="w-full bg-slate-700 hover:bg-slate-600 text-white font-bold py-2 rounded">Encerrar Sessão</button>
+            </div>
+        </div>
     </div>
 
     <script>
         lucide.createIcons();
 
-        // MOTOR DE DADOS DINÂMICOS
+        // --- LÓGICA UNIVERSAL PARA PUXAR NOME E FOTO DA CRIANÇA ---
         document.addEventListener('DOMContentLoaded', () => {
-            const dados = localStorage.getItem('guardian_dados_criancas');
-            if (dados) {
-                const perfis = JSON.parse(dados);
-                if (perfis.length > 0) {
-                    const p = perfis[0];
-                    // Atualiza os nomes salvos
-                    document.getElementById('nomeHeader').innerText = p.nome;
-                    document.getElementById('nomeSidebar').innerText = p.nome;
-                    
-                    const elCirculo = document.getElementById('letraSidebar');
-                    if (p.foto) {
-                        // Carrega a foto cadastrada
-                        elCirculo.innerHTML = `<img src="${p.foto}" class="w-full h-full object-cover">`;
-                    } else {
-                        // Ou a inicial do nome
-                        elCirculo.innerText = p.nome.charAt(0).toUpperCase();
+            const dadosSalvos = localStorage.getItem('guardian_dados_criancas');
+            
+            if (dadosSalvos) {
+                try {
+                    const perfis = JSON.parse(dadosSalvos);
+                    if (perfis.length > 0) {
+                        const perfilAtivo = perfis[0];
+                        const nomeDaCrianca = perfilAtivo.nome;
+                        const primeiraLetra = nomeDaCrianca.charAt(0).toUpperCase();
+                        const fotoBase64 = perfilAtivo.foto;
+                        
+                        const elNomeHeader = document.getElementById('nomeHeader');
+                        const elNomeSidebar = document.getElementById('nomeSidebar');
+                        if (elNomeHeader) elNomeHeader.innerText = nomeDaCrianca;
+                        if (elNomeSidebar) elNomeSidebar.innerText = nomeDaCrianca;
+                        
+                        const elLetraSidebar = document.getElementById('letraSidebar');
+                        if (elLetraSidebar) {
+                            if (fotoBase64) {
+                                elLetraSidebar.classList.remove('bg-gradient-to-br', 'from-emerald-400', 'to-cyan-500');
+                                elLetraSidebar.innerHTML = `<img src="${fotoBase64}" class="w-full h-full object-cover rounded-full shadow-sm">`;
+                            } else {
+                                elLetraSidebar.innerHTML = primeiraLetra;
+                            }
+                        }
                     }
+                } catch(e) {
+                    console.error("Erro ao carregar dados salvos:", e);
                 }
             }
         });
+
+        // --- LÓGICA DO MODAL DE ACESSO REMOTO ---
+        function abrirModalRemoto() {
+            document.getElementById('modalRemoto').classList.remove('hidden');
+            document.getElementById('modalRemoto').classList.add('flex');
+            
+            document.getElementById('loadingRemoto').classList.remove('hidden');
+            document.getElementById('loadingRemoto').classList.add('flex');
+            document.getElementById('sucessoRemoto').classList.add('hidden');
+            document.getElementById('sucessoRemoto').classList.remove('flex');
+            
+            setTimeout(() => { document.getElementById('barraConexao').style.width = '100%'; }, 100);
+
+            setTimeout(() => {
+                document.getElementById('loadingRemoto').classList.remove('flex');
+                document.getElementById('loadingRemoto').classList.add('hidden');
+                document.getElementById('sucessoRemoto').classList.remove('hidden');
+                document.getElementById('sucessoRemoto').classList.add('flex');
+                document.getElementById('barraConexao').style.width = '0%';
+            }, 3000);
+        }
+
+        function fecharModalRemoto() {
+            document.getElementById('modalRemoto').classList.add('hidden');
+            document.getElementById('modalRemoto').classList.remove('flex');
+        }
+
+        // --- LÓGICA DE SIMULAÇÃO DE ATIVIDADE EM TEMPO REAL ---
+        const alertasFalsos = [
+            { tipo: 'permitido', icone: 'check-circle-2', cor: 'emerald', msg: 'Acessou Google Chrome' },
+            { tipo: 'bloqueado', icone: 'shield-alert', cor: 'red', msg: 'Tentativa de abrir Instagram' },
+            { tipo: 'permitido', icone: 'check-circle-2', cor: 'emerald', msg: 'Abriu Roblox' },
+            { tipo: 'permitido', icone: 'check-circle-2', cor: 'emerald', msg: 'Acessou Wikipedia' },
+            { tipo: 'bloqueado', icone: 'shield-alert', cor: 'red', msg: 'Busca insegura interceptada' }
+        ];
+
+        let contadorAlertas = 0;
+
+        setInterval(() => {
+            const lista = document.getElementById('listaAtividades');
+            const alertaAtual = alertasFalsos[contadorAlertas % alertasFalsos.length];
+            
+            const novoHTML = `
+                <div class="flex items-center justify-between p-3 rounded-lg bg-slate-800/50 border ${alertaAtual.tipo === 'bloqueado' ? 'border-red-500/20' : 'border-slate-700/30'} animate-slide-in">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="${alertaAtual.icone}" class="text-${alertaAtual.cor}-400 h-5 w-5"></i>
+                        <div><p class="text-sm text-${alertaAtual.tipo === 'bloqueado' ? 'red-400' : 'white'} font-medium">${alertaAtual.msg}</p><p class="text-xs text-slate-400">Agora mesmo</p></div>
+                    </div>
+                    <span class="text-xs text-${alertaAtual.cor}-400 bg-${alertaAtual.cor}-500/10 border border-${alertaAtual.cor}-500/20 px-2 py-1 rounded-full">${alertaAtual.tipo === 'permitido' ? 'Permitido' : 'Bloqueado'}</span>
+                </div>
+            `;
+
+            lista.insertAdjacentHTML('afterbegin', novoHTML);
+            lucide.createIcons();
+
+            if (lista.children.length > 4) {
+                lista.removeChild(lista.lastElementChild);
+            }
+
+            contadorAlertas++;
+        }, 12000); 
     </script>
 </body>
 </html>

@@ -3,93 +3,248 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GuardianWatch - Aplicativos</title>
+    <title>GuardianWatch - Aplicativos e Sites</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body { background-color: #0F172A; color: white; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         .animate-slide-down { animation: slideDown 0.3s ease-out forwards; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
     </style>
 </head>
 <body>
     <div class="flex min-h-screen bg-[#0F172A]">
+        <button class="inline-flex items-center justify-center h-10 w-10 fixed top-4 left-4 z-50 md:hidden text-white hover:bg-slate-700 rounded-md">
+            <i data-lucide="menu" class="h-5 w-5"></i>
+        </button>
+
         <aside class="fixed top-0 left-0 h-full z-40 bg-[#0F172A] border-r border-slate-700/50 flex flex-col w-[260px] hidden md:flex">
             <div class="flex items-center gap-3 px-4 h-16 border-b border-slate-700/50">
-                <div class="w-9 h-9 rounded-lg bg-indigo-500 flex items-center justify-center"><i data-lucide="shield" class="h-5 w-5 text-white"></i></div>
+                <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                    <i data-lucide="shield" class="h-5 w-5 text-white"></i>
+                </div>
                 <span class="text-lg font-bold text-white">GuardianWatch</span>
             </div>
-            <nav class="flex-1 py-4 px-3 space-y-1">
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white" href="painel.html"><i data-lucide="layout-dashboard" class="h-5 w-5"></i><span>Painel</span></a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white" href="tempo.html"><i data-lucide="clock" class="h-5 w-5"></i><span>Tempo de Tela</span></a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-indigo-500/20 text-indigo-400" href="apps.html"><i data-lucide="app-window" class="h-5 w-5"></i><span>Aplicativos</span></a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white" href="localizacao.html"><i data-lucide="map-pin" class="h-5 w-5"></i><span>Localização</span></a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white" href="filtro.html"><i data-lucide="shield" class="h-5 w-5"></i><span>Filtro Web</span></a>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white" href="relatorios.html"><i data-lucide="bar-chart-2" class="h-5 w-5"></i><span>Relatórios</span></a>
+            
+            <nav class="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="painel.html"><i data-lucide="layout-dashboard" class="h-5 w-5"></i><span>Painel</span></a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="tempo.html"><i data-lucide="clock" class="h-5 w-5"></i><span>Tempo de Tela</span></a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-indigo-500/20 text-indigo-400" href="apps.html"><i data-lucide="app-window" class="h-5 w-5"></i><span>Aplicativos e Sites</span></a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="localizacao.html"><i data-lucide="map-pin" class="h-5 w-5"></i><span>Localização</span></a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="filtro.html"><i data-lucide="shield" class="h-5 w-5"></i><span>Filtro Web</span></a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="relatorios.html"><i data-lucide="bar-chart-2" class="h-5 w-5"></i><span>Relatórios</span></a>
                 <div class="my-2 border-t border-slate-700/50"></div>
-                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white" href="configuracoes.html"><i data-lucide="settings" class="h-5 w-5"></i><span>Configurações</span></a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800" href="configuracoes.html"><i data-lucide="settings" class="h-5 w-5"></i><span>Configurações</span></a>
             </nav>
+
             <div class="p-4 border-t border-slate-700/50 flex items-center gap-3">
-                <div id="letraSidebar" class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold overflow-hidden border border-slate-600">?</div>
-                <div>
-                    <p id="nomeSidebar" class="text-sm font-bold text-white truncate w-32">Carregando...</p>
-                    <p class="text-[10px] text-emerald-400">Online</p>
-                </div>
+                <div id="letraSidebar" class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-white text-sm font-bold">L</div>
+                <div><p id="nomeSidebar" class="text-sm font-medium text-white">Leticia</p><p class="text-xs text-emerald-400">Online agora</p></div>
             </div>
         </aside>
 
-        <main class="flex-1 md:ml-[260px] p-8">
-            <h1 class="text-3xl font-bold text-white mb-2">Aplicativos</h1>
-            <p class="text-slate-400 mb-8 italic">Restrições de apps para <span id="nomeHeader" class="text-indigo-400">...</span></p>
-            
-            <div class="bg-[#1E293B] rounded-xl border border-slate-700 overflow-hidden">
-                <div class="p-5 flex items-center justify-between border-b border-slate-700 hover:bg-slate-800/50 transition-colors">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center text-2xl">▶️</div>
-                        <h3 class="font-bold">YouTube</h3>
-                    </div>
-                    <button onclick="abrirModalLimite('YouTube')" class="text-xs font-bold text-indigo-400 border border-indigo-500/30 px-4 py-2 rounded bg-indigo-500/10 hover:bg-indigo-500/20">Definir Limite</button>
+        <main class="flex-1 md:ml-[260px] p-4 md:p-6 lg:p-8 overflow-auto">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between mb-8 mt-12 md:mt-0 gap-4">
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-bold text-white mb-2">Aplicativos e Sites</h1>
+                    <p class="text-slate-400">Busque na internet e adicione restrições personalizadas.</p>
                 </div>
-                <div class="p-5 flex items-center justify-between border-b border-slate-700 hover:bg-slate-800/50 transition-colors">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center text-2xl">🎮</div>
-                        <h3 class="font-bold">Roblox</h3>
+
+                <div class="flex gap-2 w-full lg:w-auto">
+                    <div class="relative w-full lg:w-64">
+                        <i data-lucide="globe" class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400"></i>
+                        <input type="text" id="buscaWebInput" placeholder="Buscar app ou site..." class="w-full bg-[#1E293B] border border-slate-600 rounded-lg pl-10 pr-4 py-2 text-white text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 shadow-lg">
                     </div>
-                    <button onclick="abrirModalLimite('Roblox')" class="text-xs font-bold text-indigo-400 border border-indigo-500/30 px-4 py-2 rounded bg-indigo-500/10 hover:bg-indigo-500/20">Definir Limite</button>
+                    <button onclick="simularBuscaWeb()" id="btnBuscarWeb" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 transition-all shadow-lg shadow-indigo-500/20">
+                        <i id="iconeBuscarWeb" data-lucide="search" class="w-4 h-4"></i>
+                        <span id="textoBuscarWeb">Buscar</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="areaResultadoBusca" class="hidden mb-8 animate-slide-down">
+                <h3 class="text-sm font-semibold text-slate-400 mb-3 uppercase tracking-wider">Resultado da Busca</h3>
+                <div class="bg-gradient-to-r from-slate-800 to-[#1E293B] border border-indigo-500/40 rounded-xl p-5 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-slate-900 flex items-center justify-center border border-slate-700 shadow-inner">
+                            <i data-lucide="globe-2" class="w-8 h-8 text-indigo-400"></i>
+                        </div>
+                        <div>
+                            <h4 id="resultadoNome" class="text-lg font-bold text-white">Novo App/Site</h4>
+                            <p class="text-sm text-slate-400">Encontrado na rede. Deseja adicionar à lista?</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button onclick="fecharBusca()" class="px-4 py-2 rounded-lg border border-slate-600 text-slate-300 hover:bg-slate-700 text-sm font-medium transition-colors">Cancelar</button>
+                        <button onclick="adicionarAppNaLista()" class="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-bold flex items-center gap-2 shadow-lg shadow-emerald-500/20 transition-colors">
+                            <i data-lucide="plus" class="w-4 h-4"></i> Adicionar Regra
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-[#1E293B] rounded-xl border border-slate-700/50 shadow-lg overflow-hidden">
+                <div class="p-4 bg-slate-800/50 border-b border-slate-700/50 flex justify-between items-center">
+                    <h3 class="font-semibold text-white">Itens Gerenciados</h3>
+                    <span class="text-xs text-slate-400 bg-slate-900 px-2 py-1 rounded-full border border-slate-700">Controle ativo</span>
+                </div>
+                
+                <div class="grid grid-cols-1 divide-y divide-slate-700/50" id="listaAppsContainer">
+                    
+                    <div class="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-800/30 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-2xl">▶️</div>
+                            <div>
+                                <h3 class="text-white font-bold">YouTube</h3>
+                                <p class="text-xs text-slate-400 mt-0.5">App de Vídeos</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <button onclick="abrirModalLimite('YouTube')" class="text-xs font-medium text-indigo-400 border border-indigo-500/30 px-3 py-1.5 rounded bg-indigo-500/10 hover:bg-indigo-500/20">Limite Diário</button>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" class="sr-only peer" checked>
+                                <div class="w-11 h-6 bg-red-500 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-800/30 transition-colors">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-2xl">🎮</div>
+                            <div>
+                                <h3 class="text-white font-bold">Roblox</h3>
+                                <p class="text-xs text-slate-400 mt-0.5">Jogos</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <button onclick="abrirModalLimite('Roblox')" class="text-xs font-medium text-indigo-400 border border-indigo-500/30 px-3 py-1.5 rounded bg-indigo-500/10 hover:bg-indigo-500/20">Limite Diário</button>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" class="sr-only peer" checked>
+                                <div class="w-11 h-6 bg-red-500 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
     </div>
 
     <div id="modalLimite" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] hidden items-center justify-center p-4">
-        <div class="bg-[#1E293B] border border-slate-700 rounded-2xl w-full max-w-sm p-8 animate-slide-down">
-            <h3 class="text-xl font-bold text-white mb-4">Limite: <span id="nomeAppLimite" class="text-indigo-400"></span></h3>
-            <div class="flex gap-4 mb-6">
-                <input type="number" id="hL" value="01" class="w-full bg-slate-800 border border-slate-600 rounded p-3 text-center text-xl font-bold">
-                <input type="number" id="mL" value="30" class="w-full bg-slate-800 border border-slate-600 rounded p-3 text-center text-xl font-bold">
+        <div class="bg-[#1E293B] border border-slate-700 rounded-2xl w-full max-w-sm shadow-2xl overflow-hidden animate-slide-down">
+            <div class="p-6 border-b border-slate-700 flex justify-between items-center">
+                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                    <i data-lucide="timer" class="text-indigo-400 w-5 h-5"></i> 
+                    Limite para <span id="nomeAppLimite" class="text-indigo-400">App</span>
+                </h3>
+                <button onclick="fecharModalLimite()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
-            <button onclick="fecharModalLimite()" class="w-full bg-indigo-600 py-3 rounded-xl font-bold">Confirmar</button>
+            
+            <div class="p-8 flex flex-col items-center">
+                <p class="text-sm text-slate-400 mb-6 text-center">Defina o tempo máximo de uso por dia para este aplicativo.</p>
+                
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="flex flex-col items-center">
+                        <input type="number" id="horasLimite" value="01" min="0" max="23" class="w-16 h-16 bg-slate-800 border border-slate-600 rounded-xl text-center text-2xl font-bold text-white focus:border-indigo-500 outline-none">
+                        <span class="text-[10px] text-slate-500 mt-2 uppercase tracking-widest">Horas</span>
+                    </div>
+                    <span class="text-2xl font-bold text-slate-600">:</span>
+                    <div class="flex flex-col items-center">
+                        <input type="number" id="minutosLimite" value="30" min="0" max="59" class="w-16 h-16 bg-slate-800 border border-slate-600 rounded-xl text-center text-2xl font-bold text-white focus:border-indigo-500 outline-none">
+                        <span class="text-[10px] text-slate-500 mt-2 uppercase tracking-widest">Minutos</span>
+                    </div>
+                </div>
+
+                <button onclick="salvarLimite()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all shadow-lg shadow-indigo-500/20">
+                    Confirmar Limite
+                </button>
+            </div>
         </div>
     </div>
 
     <script>
         lucide.createIcons();
-        function abrirModalLimite(n) { 
-            document.getElementById('nomeAppLimite').innerText = n;
-            document.getElementById('modalLimite').classList.remove('hidden');
-            document.getElementById('modalLimite').classList.add('flex');
+
+        // LÓGICA DE BUSCA WEB
+        function simularBuscaWeb() {
+            const input = document.getElementById('buscaWebInput').value.trim();
+            if (input === "") return;
+            const btn = document.getElementById('btnBuscarWeb');
+            btn.innerHTML = '<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Buscando...';
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i data-lucide="search" class="w-4 h-4"></i> Buscar';
+                document.getElementById('resultadoNome').innerText = input;
+                document.getElementById('areaResultadoBusca').classList.remove('hidden');
+                lucide.createIcons();
+            }, 1000);
         }
-        function fecharModalLimite() { document.getElementById('modalLimite').classList.add('hidden'); }
-        
+
+        function fecharBusca() {
+            document.getElementById('areaResultadoBusca').classList.add('hidden');
+        }
+
+        function adicionarAppNaLista() {
+            const nome = document.getElementById('resultadoNome').innerText;
+            const html = `
+                <div class="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-800/30 transition-colors bg-emerald-900/10">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-slate-800 border border-emerald-500/30 flex items-center justify-center text-2xl">🌐</div>
+                        <div>
+                            <h3 class="text-emerald-400 font-bold">${nome}</h3>
+                            <p class="text-xs text-slate-400 mt-0.5">Site Adicionado</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <button onclick="abrirModalLimite('${nome}')" class="text-xs font-medium text-indigo-400 border border-indigo-500/30 px-3 py-1.5 rounded bg-indigo-500/10 hover:bg-indigo-500/20">Limite Diário</button>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="sr-only peer" checked>
+                            <div class="w-11 h-6 bg-red-500 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
+                        </label>
+                    </div>
+                </div>`;
+            document.getElementById('listaAppsContainer').insertAdjacentHTML('afterbegin', html);
+            fecharBusca();
+        }
+
+        // FUNÇÕES DO MODAL
+        function abrirModalLimite(nomeApp) {
+            document.getElementById('nomeAppLimite').innerText = nomeApp;
+            const modal = document.getElementById('modalLimite');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function fecharModalLimite() {
+            const modal = document.getElementById('modalLimite');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function salvarLimite() {
+            const h = document.getElementById('horasLimite').value;
+            const m = document.getElementById('minutosLimite').value;
+            alert(`Limite de ${h}h ${m}m configurado para o app!`);
+            fecharModalLimite();
+        }
+
+        // MOTOR DE DADOS DO PERFIL
         document.addEventListener('DOMContentLoaded', () => {
             const dados = localStorage.getItem('guardian_dados_criancas');
             if (dados) {
-                const p = JSON.parse(dados)[0];
-                document.getElementById('nomeHeader').innerText = p.nome;
-                document.getElementById('nomeSidebar').innerText = p.nome;
-                const el = document.getElementById('letraSidebar');
-                if (p.foto) el.innerHTML = `<img src="${p.foto}" class="w-full h-full object-cover">`;
-                else el.innerText = p.nome.charAt(0).toUpperCase();
+                const perfis = JSON.parse(dados);
+                if (perfis.length > 0) {
+                    const p = perfis[0];
+                    document.getElementById('nomeSidebar').innerText = p.nome;
+                    const el = document.getElementById('letraSidebar');
+                    if (p.foto) {
+                        el.innerHTML = `<img src="${p.foto}" class="w-full h-full object-cover rounded-full">`;
+                    } else {
+                        el.innerText = p.nome.charAt(0).toUpperCase();
+                    }
+                }
             }
         });
     </script>
